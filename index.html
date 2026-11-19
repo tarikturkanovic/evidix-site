@@ -3,527 +3,437 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Evidix AI | Dispute evidence packets for online sellers</title>
-<meta name="description" content="Evidix AI tells online sellers exactly what proof each return, item-not-received claim or chargeback needs, and drafts the response. Join the waitlist.">
+<title>Evidix AI | Turn any idea into an AI video production plan</title>
+<meta name="description" content="Evidix AI turns a simple idea into a storyboard, characters, dialogue, camera directions and copy-ready prompts for AI video generators like Higgsfield. Join the waitlist.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="canonical" href="https://evidixai.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='3'/%3E%3Cpath d='M10 9.5v5l4.5-2.5z'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Evidix AI">
-<meta property="og:title" content="Evidix AI | Dispute evidence packets for online sellers">
-<meta property="og:description" content="Evidix AI tells online sellers exactly what proof each return, item-not-received claim or chargeback needs, and drafts the response. Join the waitlist.">
+<meta property="og:title" content="Evidix AI | Your Imagination. Brought to Life.">
+<meta property="og:description" content="Turn any idea into a cinematic AI video production plan: storyboard, characters, dialogue and optimized prompts.">
 <meta property="og:url" content="https://evidixai.com/">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-body{margin:0;background:#FFFFFF;color:#14213D;font-family:'Inter',system-ui,sans-serif}
+:root{--bg:#FFFFFF;--ink:#14213D;--blue:#2563EB;--blue-d:#1D4ED8;--panel:#F5F8FF;--line:#DCE3F0;--line2:#B9CBF5;--muted:#4B5B78;--sample-bg:#FFF2D6;--sample-line:#F0D9A6;--sample-ink:#7A4A00}
 *{box-sizing:border-box}
-a{color:#14213D;text-decoration:none}
-a:hover{color:#2563EB}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #2563EB;outline-offset:3px}
-details{border-bottom:1px solid #DCE3F0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--blue)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+[hidden]{display:none!important}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding:84px 0}
+.band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-d)}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:'Newsreader',Georgia,serif;font-weight:500;color:var(--ink);margin:0;text-wrap:balance}
+h1{font-size:clamp(42px,6vw,74px);line-height:1.02;letter-spacing:-.025em}
+h2{font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-.02em}
+h3{font-size:26px;letter-spacing:-.01em}
+.lead{margin:0;font-size:19px;line-height:1.55;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:8px;font-weight:600;font-size:16px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn.pri{background:var(--blue);color:#fff}
+.btn.pri:hover{background:var(--blue-d);color:#fff}
+.btn.sec2{border-color:var(--ink);background:#fff;font-weight:500}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+.chip{display:inline-flex;align-items:center;font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:#E4EDFF;color:var(--blue-d)}
+.sample{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--sample-bg);border:1px solid var(--sample-line);color:var(--sample-ink)}
+.tab{min-height:44px;padding:0 18px;border:1px solid var(--line2);border-radius:999px;background:#fff;color:var(--ink);font-family:inherit;font-weight:500;font-size:14px;cursor:pointer}
+.tab[aria-pressed="true"]{border-color:var(--blue);background:var(--blue);color:#fff}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.ico{width:44px;height:44px;border-radius:10px;background:#E4EDFF;display:flex;align-items:center;justify-content:center}
+details{border-bottom:1px solid var(--line)}
 summary{cursor:pointer;list-style:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600;font-size:18px;min-height:44px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:'IBM Plex Mono',ui-monospace,monospace;color:#2563EB;font-size:22px}
+summary::after{content:"+";font-family:'IBM Plex Mono',monospace;color:var(--blue);font-size:22px}
 details[open] summary::after{content:"\2013"}
-details p{margin:0 0 20px;max-width:680px;color:#4B5B78;line-height:1.6;font-size:16px}
-
-[hidden]{display:none!important}
-html{scroll-behavior:smooth}
-.tab{min-height:44px;padding:0 20px;border:1px solid #B9CBF5;border-radius:999px;background:#FFFFFF;color:#14213D;font-family:'Inter',system-ui,sans-serif;font-weight:500;font-size:15px;cursor:pointer}
-.tab[aria-pressed="true"]{border-color:#2563EB;background:#2563EB;color:#FFFFFF}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
+details p{margin:0 0 20px;max-width:680px;color:var(--muted);line-height:1.6}
+.nav a.l{display:inline-flex;align-items:center;min-height:44px;color:var(--muted);font-size:15px}
+.scene{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.scene:first-child{border-top:0}
+.scene b{font-weight:600}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));align-items:stretch}
+.plan{display:flex;flex-direction:column;gap:16px}
+.plan.feat{border-color:var(--blue);box-shadow:0 24px 48px -30px rgba(37,99,235,.55)}
+.plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.plan li{display:flex;gap:10px}
+.plan li::before{content:"";flex:0 0 16px;height:16px;margin-top:3px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E")}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(37,99,235,.5);border-color:var(--line2)}
+.caret::after{content:"";display:inline-block;width:7px;height:1em;margin-left:2px;vertical-align:-2px;background:#7FA6F5;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;padding:4px;background:#fff;gap:4px}
+.seg button{min-height:40px;padding:0 20px;border:0;border-radius:999px;background:transparent;font-family:inherit;font-weight:600;font-size:14px;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.mk{border-radius:12px;padding:20px;min-height:230px;font-size:15px;line-height:1.65}
+.mk.bad{background:#fff;border:1px dashed #C9A0A0;color:var(--muted)}
+.mk.good{background:#14213D;border:1px solid #14213D;color:#E6ECFA;font-family:'IBM Plex Mono',monospace;font-size:13px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade{animation:none}.rv{opacity:1;transform:none;transition:none}.card:hover{transform:none}.caret::after{animation:none}}
+@media (max-width:560px){.sec{padding:60px 0}.scene{grid-template-columns:64px 1fr}}
 </style>
 </head>
 <body>
-<div id="top" style="background:#FFFFFF;color:#14213D;font-family:'Inter',system-ui,sans-serif;line-height:1.5">
+<div id="top">
 
 <!-- NAV -->
-<div style="border-bottom:1px solid #DCE3F0">
-<div style="max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
-<a href="#top" style="display:flex;align-items:center;gap:10px;font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:26px;letter-spacing:-0.01em;color:#14213D">
-<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-<span>Evidix AI</span>
-</a>
-<nav style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;font-size:15px">
-<a href="#week" style="display:inline-flex;align-items:center;min-height:44px;color:#4B5B78">What it does</a>
-<a href="#how" style="display:inline-flex;align-items:center;min-height:44px;color:#4B5B78">How it works</a>
-<a href="#faq" style="display:inline-flex;align-items:center;min-height:44px;color:#4B5B78">Questions</a>
-<a data-cta href="#waitlist" style="display:inline-flex;align-items:center;min-height:44px;padding:0 22px;background:#2563EB;color:#FFFFFF;border-radius:8px;font-weight:600">Join the waitlist</a>
+<header style="border-bottom:1px solid var(--line)">
+<div class="wrap nav" style="padding-top:12px;padding-bottom:12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px">
+<a href="#top" style="display:flex;align-items:center;gap:10px;font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:26px;letter-spacing:-.01em">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>
+<span>Evidix AI</span></a>
+<nav style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px">
+<a class="l" href="#how">How it works</a>
+<a class="l" href="#features">Features</a>
+<a class="l" href="#pricing">Pricing</a>
+<a class="l" href="#faq">Questions</a>
+<a class="btn pri" style="min-height:44px;padding:0 22px;font-size:15px" href="#waitlist">Join the waitlist</a>
 </nav>
 </div>
-</div>
+</header>
 
 <!-- HERO -->
-<div style="max-width:1200px;margin:0 auto;padding:72px 24px 88px;display:flex;flex-wrap:wrap;align-items:center;gap:48px">
+<section class="wrap" style="padding-top:72px;padding-bottom:88px;display:flex;flex-wrap:wrap;align-items:center;gap:48px">
 <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:24px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1D4ED8">Dispute support for online sellers</p>
-<h1 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(42px,6vw,74px);line-height:1.02;letter-spacing:-0.025em;color:#14213D;text-wrap:balance">Answer every dispute with proof.</h1>
-<p style="margin:0;max-width:540px;font-size:19px;line-height:1.55;color:#4B5B78">Evidix AI tells you exactly what proof each return, "item not received" claim or chargeback needs, organizes what you have, and drafts your response. You review it and send it yourself.</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-<a data-cta href="#waitlist" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;background:#2563EB;color:#FFFFFF;border-radius:8px;font-weight:600;font-size:16px">Join the waitlist</a>
-<a href="#how" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border:1px solid #14213D;border-radius:8px;font-weight:500;font-size:16px">See how it works</a>
+<p class="eyebrow">AI video production planning</p>
+<h1>Your Imagination. Brought to Life.</h1>
+<p class="lead" style="max-width:560px">Turn any idea into a cinematic AI video production plan. Evidix AI creates detailed storyboards, character descriptions, dialogue, and optimized prompts so you can bring your vision to life with AI video generators.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a class="btn pri" href="#waitlist">Start Creating</a>
+<a class="btn sec2" href="#how">See How It Works</a>
 </div>
-<p style="margin:0;font-size:14px;color:#4B5B78">Launching soon at $49 a month, flat. Never a percentage of what you win back.</p>
+<p style="margin:0;font-size:14px;color:var(--muted)">Early access is opening soon. Evidix AI plans your video; you generate it in Higgsfield or another video generator.</p>
 </div>
 
-<!-- hero preview -->
-<div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:10px">
-<div style="background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 48px -28px rgba(20,33,61,0.35)">
+<!-- demo -->
+<div style="flex:1 1 500px;min-width:0;display:flex;flex-direction:column;gap:10px">
+<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 48px -28px rgba(20,33,61,.35)">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px">
-<div style="font-weight:600;font-size:16px">Sample shop</div>
-<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#4B5B78;border:1px solid #DCE3F0;border-radius:999px;padding:4px 10px;background:#FFF2D6;border-color:#F0D9A6;color:#7A4A00">Sample data</span>
+<span class="mono">From idea to plan</span><span class="sample">Sample output</span>
 </div>
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:8px">
-<div style="min-width:0">
-<div style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:24px;line-height:1.2">Case D-2041 · Item not received</div>
-<div style="font-size:14px;color:#4B5B78">Order #1041 · $48.00 · Sample Buyer A</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px" id="demo-tabs">
+<button type="button" class="tab" data-demo="ad" aria-pressed="true">Product ad</button>
+<button type="button" class="tab" data-demo="story" aria-pressed="false">Animated story</button>
+<button type="button" class="tab" data-demo="ugc" aria-pressed="false">UGC clip</button>
 </div>
-<span style="display:inline-flex;align-items:center;font-size:12px;font-weight:500;padding:6px 10px;border-radius:999px;background:#FDF0D5;color:#7A4A00">Reply due in 3 days</span>
+<div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px">
+<div class="mono" style="margin-bottom:6px">Your idea</div>
+<div id="demo-idea" style="font-size:15px"></div>
 </div>
-
-<div style="display:flex;flex-direction:column;gap:8px">
-<div style="display:flex;justify-content:space-between;gap:8px;font-size:14px"><span style="font-weight:600">Evidence packet</span><span style="color:#4B5B78">4 of 5 attached</span></div>
-<div style="height:8px;background:#E4EDFF;border-radius:4px"><div style="height:8px;width:80%;background:#2563EB;border-radius:4px"></div></div>
+<div style="display:flex;align-items:center;gap:10px;color:var(--blue-d);font-size:13px;font-weight:600">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14M6 12l6 6 6-6"/></svg>Evidix AI builds the plan
 </div>
-
-<div style="display:flex;flex-direction:column;font-size:14px">
-<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #DCE3F0"><span>Carrier tracking, delivered</span><span style="color:#14602F;font-weight:500">Attached</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #DCE3F0"><span>Delivery confirmation</span><span style="color:#14602F;font-weight:500">Attached</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #DCE3F0"><span>Buyer message history</span><span style="color:#14602F;font-weight:500">Attached</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #DCE3F0"><span>Order details</span><span style="color:#14602F;font-weight:500">Attached</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #DCE3F0"><span>Photo of the packaging</span><span style="color:#7A4A00;font-weight:500">Needs document</span></div>
+<div>
+<div class="mono" style="margin-bottom:4px">Storyboard</div>
+<div id="demo-scenes"></div>
 </div>
-
-<div style="background:#F5F8FF;border:1px solid #DCE3F0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
-<div style="font-size:13px;font-weight:600;color:#14213D">Draft response</div>
-<div style="height:8px;background:#CBD7F0;border-radius:4px"></div>
-<div style="height:8px;width:94%;background:#CBD7F0;border-radius:4px"></div>
-<div style="height:8px;width:62%;background:#CBD7F0;border-radius:4px"></div>
-</div>
-
-<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px">
-<div data-if="pending" style="display:contents">
-<span style="display:inline-flex;align-items:center;font-size:12px;font-weight:500;padding:6px 10px;border-radius:999px;background:#FDF0D5;color:#7A4A00">Waiting for your review</span>
-</div>
-<div data-if="approved" style="display:contents" hidden>
-<span style="display:inline-flex;align-items:center;font-size:12px;font-weight:500;padding:6px 10px;border-radius:999px;background:#DDF3E6;color:#14602F">Reviewed (sample)</span>
-</div>
-<button type="button" id="approve-btn" style="min-height:44px;padding:0 20px;border:0;border-radius:8px;background:#2563EB;color:#FFFFFF;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:14px;cursor:pointer">Mark as reviewed</button>
+<div style="background:#14213D;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#B9CBF5">Prompt · Part 1</span>
+<button type="button" id="demo-copy" style="min-height:36px;padding:0 14px;border:0;border-radius:6px;background:#2563EB;color:#fff;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer">Copy prompt</button></div>
+<div id="demo-prompt" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.6;color:#E6ECFA"></div>
 </div>
 </div>
-<p style="margin:0;font-size:13px;color:#4B5B78;font-style:italic">Product preview. Sample data. The button changes nothing but this sample.</p>
+<p style="margin:0;font-size:13px;color:var(--muted);font-style:italic">A hand-written example showing the kind of plan Evidix AI is being built to produce. It is not live output.</p>
 </div>
-</div>
-
-<!-- WHAT'S COMING THIS WEEK (workflow chart) -->
-<div id="week" style="background:#F5F8FF;border-top:1px solid #DCE3F0;border-bottom:1px solid #DCE3F0">
-<div style="max-width:1200px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;gap:32px">
-<div style="display:flex;flex-direction:column;gap:14px;max-width:720px">
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;color:#14213D;text-wrap:balance">What's coming this week</h2>
-<p style="margin:0;font-size:19px;line-height:1.6;color:#4B5B78">A familiar week for an online seller. Each of these jobs is work a system can take on, once it is built around the platforms you sell on.</p>
-</div>
-<div style="display:flex;justify-content:flex-end"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#FFF2D6;border:1px solid #F0D9A6;color:#7A4A00">Sample data</span></div>
-
-<div style="overflow-x:auto">
-<div style="position:relative;width:1072px;height:540px">
-
-<!-- lines first -->
-<svg role="img" aria-label="From Chargeback notice arrives to Intake" width="311" height="8" viewBox="0 0 311 8" preserveAspectRatio="none" style="position:absolute;left:380px;top:44px;width:311px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><marker id="dc-arrow-head-filled-1" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#4F7BD9" stroke="none" style="stroke:none;fill:#4F7BD9;fill:context-stroke"/></marker></defs><path d="M 0 4 L 307 4" marker-end="url(#dc-arrow-head-filled-1)"></path></svg>
-
-<svg aria-hidden="true" width="120" height="8" viewBox="0 0 120 8" preserveAspectRatio="none" style="position:absolute;left:380px;top:124px;width:120px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 0 4 L 120 4"></path></svg>
-<svg aria-hidden="true" width="8" height="14" viewBox="0 0 8 14" preserveAspectRatio="none" style="position:absolute;left:496px;top:128px;width:8px;height:14px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 4 0 L 4 14"></path></svg>
-<svg role="img" aria-label="From Buyer says item not received to Evidence" width="191" height="8" viewBox="0 0 191 8" preserveAspectRatio="none" style="position:absolute;left:500px;top:138px;width:191px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><marker id="dc-arrow-head-filled-2" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#4F7BD9" stroke="none" style="stroke:none;fill:#4F7BD9;fill:context-stroke"/></marker></defs><path d="M 0 4 L 187 4" marker-end="url(#dc-arrow-head-filled-2)"></path></svg>
-
-<svg aria-hidden="true" width="180" height="8" viewBox="0 0 180 8" preserveAspectRatio="none" style="position:absolute;left:380px;top:204px;width:180px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 0 4 L 180 4"></path></svg>
-<svg aria-hidden="true" width="8" height="38" viewBox="0 0 8 38" preserveAspectRatio="none" style="position:absolute;left:556px;top:170px;width:8px;height:38px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 4 0 L 4 38"></path></svg>
-<svg role="img" aria-label="From Photos for a damaged-item claim to Evidence" width="131" height="8" viewBox="0 0 131 8" preserveAspectRatio="none" style="position:absolute;left:560px;top:166px;width:131px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><marker id="dc-arrow-head-filled-3" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#4F7BD9" stroke="none" style="stroke:none;fill:#4F7BD9;fill:context-stroke"/></marker></defs><path d="M 0 4 L 127 4" marker-end="url(#dc-arrow-head-filled-3)"></path></svg>
-
-<svg aria-hidden="true" width="140" height="8" viewBox="0 0 140 8" preserveAspectRatio="none" style="position:absolute;left:380px;top:284px;width:140px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 0 4 L 140 4"></path></svg>
-<svg aria-hidden="true" width="8" height="24" viewBox="0 0 8 24" preserveAspectRatio="none" style="position:absolute;left:516px;top:264px;width:8px;height:24px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 4 0 L 4 24"></path></svg>
-<svg role="img" aria-label="From Reply to a return request to Response" width="171" height="8" viewBox="0 0 171 8" preserveAspectRatio="none" style="position:absolute;left:520px;top:260px;width:171px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><marker id="dc-arrow-head-filled-4" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#4F7BD9" stroke="none" style="stroke:none;fill:#4F7BD9;fill:context-stroke"/></marker></defs><path d="M 0 4 L 167 4" marker-end="url(#dc-arrow-head-filled-4)"></path></svg>
-
-<svg role="img" aria-label="From Respond before Friday's deadline to Deadlines" width="311" height="8" viewBox="0 0 311 8" preserveAspectRatio="none" style="position:absolute;left:380px;top:364px;width:311px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><marker id="dc-arrow-head-filled-5" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#4F7BD9" stroke="none" style="stroke:none;fill:#4F7BD9;fill:context-stroke"/></marker></defs><path d="M 0 4 L 307 4" marker-end="url(#dc-arrow-head-filled-5)"></path></svg>
-
-<svg aria-hidden="true" width="160" height="8" viewBox="0 0 160 8" preserveAspectRatio="none" style="position:absolute;left:380px;top:444px;width:160px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 0 4 L 160 4"></path></svg>
-<svg aria-hidden="true" width="8" height="32" viewBox="0 0 8 32" preserveAspectRatio="none" style="position:absolute;left:536px;top:448px;width:8px;height:32px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M 4 0 L 4 32"></path></svg>
-<svg role="img" aria-label="From Spot repeat problems to Insights" width="151" height="8" viewBox="0 0 151 8" preserveAspectRatio="none" style="position:absolute;left:540px;top:476px;width:151px;height:8px;overflow:visible;fill:none;stroke:#4F7BD9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><defs><marker id="dc-arrow-head-filled-6" orient="auto" markerWidth="5" markerHeight="5" refX="2" refY="2" overflow="visible"><path d="M0 0 L4 2 L0 4 Z" fill="#4F7BD9" stroke="none" style="stroke:none;fill:#4F7BD9;fill:context-stroke"/></marker></defs><path d="M 0 4 L 147 4" marker-end="url(#dc-arrow-head-filled-6)"></path></svg>
-
-<!-- tasks -->
-<div style="position:absolute;left:0px;top:16px;width:380px;height:64px;box-sizing:border-box;padding:0 16px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:10px;font-size:15px;line-height:20px;text-align:left"><span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;border:1.5px solid #9DB0D6;border-radius:4px"></span><span><b style="font-weight:600">Chargeback notice arrives</b><br><span style="font-size:13px;color:#4B5B78">Mon · </span><span style="font-size:13px;color:#1D4ED8">Handled by Intake</span></span></div>
-<div style="position:absolute;left:0px;top:96px;width:380px;height:64px;box-sizing:border-box;padding:0 16px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:10px;font-size:15px;line-height:20px;text-align:left"><span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;border:1.5px solid #9DB0D6;border-radius:4px"></span><span><b style="font-weight:600">Buyer says item not received</b><br><span style="font-size:13px;color:#4B5B78">Mon · </span><span style="font-size:13px;color:#1D4ED8">Handled by Evidence</span></span></div>
-<div style="position:absolute;left:0px;top:176px;width:380px;height:64px;box-sizing:border-box;padding:0 16px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:10px;font-size:15px;line-height:20px;text-align:left"><span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;border:1.5px solid #9DB0D6;border-radius:4px"></span><span><b style="font-weight:600">Photos for a damaged-item claim</b><br><span style="font-size:13px;color:#4B5B78">Tue · </span><span style="font-size:13px;color:#1D4ED8">Handled by Evidence</span></span></div>
-<div style="position:absolute;left:0px;top:256px;width:380px;height:64px;box-sizing:border-box;padding:0 16px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:10px;font-size:15px;line-height:20px;text-align:left"><span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;border:1.5px solid #9DB0D6;border-radius:4px"></span><span><b style="font-weight:600">Reply to a return request</b><br><span style="font-size:13px;color:#4B5B78">Wed · </span><span style="font-size:13px;color:#1D4ED8">Handled by Response</span></span></div>
-<div style="position:absolute;left:0px;top:336px;width:380px;height:64px;box-sizing:border-box;padding:0 16px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:10px;font-size:15px;line-height:20px;text-align:left"><span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;border:1.5px solid #9DB0D6;border-radius:4px"></span><span><b style="font-weight:600">Respond before Friday's deadline</b><br><span style="font-size:13px;color:#4B5B78">Thu · </span><span style="font-size:13px;color:#1D4ED8">Handled by Deadlines</span></span></div>
-<div style="position:absolute;left:0px;top:416px;width:380px;height:64px;box-sizing:border-box;padding:0 16px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:10px;font-size:15px;line-height:20px;text-align:left"><span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;border:1.5px solid #9DB0D6;border-radius:4px"></span><span><b style="font-weight:600">Spot repeat problems</b><br><span style="font-size:13px;color:#4B5B78">Fri · </span><span style="font-size:13px;color:#1D4ED8">Handled by Insights</span></span></div>
-
-<!-- blocks -->
-<div style="position:absolute;left:692px;top:12px;width:380px;height:72px;box-sizing:border-box;padding:0 18px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #B9CBF5;border-radius:10px;box-shadow:0 12px 26px -16px rgba(37,99,235,0.5);font-size:13px;line-height:18px;text-align:left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 24px"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z"/><path d="M3 13h5l1 3h6l1-3h5"/></svg><span><b style="font-size:16px;color:#14213D">Intake</b><br><span style="color:#4B5B78">Reads the notice you send in</span></span></div>
-<div style="position:absolute;left:692px;top:120px;width:380px;height:72px;box-sizing:border-box;padding:0 18px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #B9CBF5;border-radius:10px;box-shadow:0 12px 26px -16px rgba(37,99,235,0.5);font-size:13px;line-height:18px;text-align:left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 24px"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h6"/></svg><span><b style="font-size:16px;color:#14213D">Evidence</b><br><span style="color:#4B5B78">Lists the proof you need</span></span></div>
-<div style="position:absolute;left:692px;top:228px;width:380px;height:72px;box-sizing:border-box;padding:0 18px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #B9CBF5;border-radius:10px;box-shadow:0 12px 26px -16px rgba(37,99,235,0.5);font-size:13px;line-height:18px;text-align:left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 24px"><path d="M4 5h16v11H9l-5 4z"/></svg><span><b style="font-size:16px;color:#14213D">Response</b><br><span style="color:#4B5B78">Drafts your reply for approval</span></span></div>
-<div style="position:absolute;left:692px;top:332px;width:380px;height:72px;box-sizing:border-box;padding:0 18px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #B9CBF5;border-radius:10px;box-shadow:0 12px 26px -16px rgba(37,99,235,0.5);font-size:13px;line-height:18px;text-align:left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 24px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b style="font-size:16px;color:#14213D">Deadlines</b><br><span style="color:#4B5B78">Tracks every due date</span></span></div>
-<div style="position:absolute;left:692px;top:444px;width:380px;height:72px;box-sizing:border-box;padding:0 18px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border:1px solid #B9CBF5;border-radius:10px;box-shadow:0 12px 26px -16px rgba(37,99,235,0.5);font-size:13px;line-height:18px;text-align:left"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 24px"><path d="M5 20V11M12 20V4M19 20v-7"/></svg><span><b style="font-size:16px;color:#14213D">Insights</b><br><span style="color:#4B5B78">Shows what keeps causing disputes</span></span></div>
-
-</div>
-</div>
-</div>
-</div>
+</section>
 
 <!-- HOW IT WORKS -->
-<div id="how" style="max-width:1200px;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:40px">
+<section id="how" class="band"><div class="wrap sec" style="display:flex;flex-direction:column;gap:40px">
 <div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1D4ED8">How it works</p>
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;color:#14213D;text-wrap:balance">How a dispute moves through Evidix AI</h2>
+<p class="eyebrow">How it works</p>
+<h2>From a rough idea to a plan you can generate from.</h2>
 </div>
+<div class="grid g3">
+<div class="card" style="display:flex;flex-direction:column;gap:12px"><span class="mono">Step 1</span><h3>Describe Your Idea</h3><p style="margin:0;color:var(--muted);line-height:1.6">Tell Evidix AI what you want to create, whether it's a commercial, animated story, product advertisement, or cinematic short film.</p></div>
+<div class="card" style="display:flex;flex-direction:column;gap:12px"><span class="mono">Step 2</span><h3>Let AI Build Your Video Plan</h3><p style="margin:0;color:var(--muted);line-height:1.6">Evidix AI develops the storyline, scenes, characters, dialogue, camera directions, and generation prompts.</p></div>
+<div class="card" style="display:flex;flex-direction:column;gap:12px"><span class="mono">Step 3</span><h3>Bring Your Video to Life</h3><p style="margin:0;color:var(--muted);line-height:1.6">Copy the optimized prompts into Higgsfield or another supported video generator.</p></div>
+</div>
+<div style="background:#fff;border:1px solid var(--line2);border-radius:12px;padding:16px 20px;font-size:15px;color:var(--muted);max-width:760px"><b style="color:var(--ink)">Where the video gets made.</b> Evidix AI creates the plan and prompts. Finished videos are generated on the external platform you choose, using your own account there.</div>
+</div></section>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
-
-<div style="background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px">
-<div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4B5B78">Step 1</div>
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:30px;letter-spacing:-0.01em">Collect</h3>
-<p style="margin:0;font-size:15px;line-height:1.6;color:#4B5B78">You send what you already have: the dispute notice, order details, tracking and buyer messages.</p>
-<div style="margin-top:auto;background:#F5F8FF;border:1px solid #DCE3F0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:13px">
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Dispute notice</span><span style="color:#14602F">Added</span></div>
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Order #1041</span><span style="color:#14602F">Added</span></div>
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Tracking</span><span style="color:#14602F">Added</span></div>
-</div>
-</div>
-
-<div style="background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px">
-<div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4B5B78">Step 2</div>
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:30px;letter-spacing:-0.01em">Build</h3>
-<p style="margin:0;font-size:15px;line-height:1.6;color:#4B5B78">Evidix AI lists the proof that kind of dispute needs, matches it to what you added and shows anything still missing.</p>
-<div style="margin-top:auto;background:#F5F8FF;border:1px solid #DCE3F0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:13px">
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Tracking</span><span style="color:#14602F">Attached</span></div>
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Messages</span><span style="color:#14602F">Attached</span></div>
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Packaging photo</span><span style="color:#7A4A00">Needs document</span></div>
-</div>
-</div>
-
-<div style="background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px">
-<div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4B5B78">Step 3</div>
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:30px;letter-spacing:-0.01em">Draft</h3>
-<p style="margin:0;font-size:15px;line-height:1.6;color:#4B5B78">It writes the response in your voice and points to each piece of evidence, so the reviewer can see the proof.</p>
-<div style="margin-top:auto;background:#F5F8FF;border:1px solid #DCE3F0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:13px">
-<div style="font-weight:600">Response · draft</div>
-<div style="height:8px;background:#CBD7F0;border-radius:4px"></div>
-<div style="height:8px;width:92%;background:#CBD7F0;border-radius:4px"></div>
-<div style="height:8px;width:64%;background:#CBD7F0;border-radius:4px"></div>
-<div style="color:#4B5B78">4 items cited</div>
-</div>
-</div>
-
-<div style="background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px">
-<div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4B5B78">Step 4</div>
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:30px;letter-spacing:-0.01em">Approve and track</h3>
-<p style="margin:0;font-size:15px;line-height:1.6;color:#4B5B78">You review the response, edit it and send it yourself. Evidix AI keeps the deadline in view until the case closes.</p>
-<div style="margin-top:auto;background:#F5F8FF;border:1px solid #DCE3F0;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:13px">
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Response</span><span style="color:#14602F">Sent by you</span></div>
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Platform review</span><span style="color:#7A4A00">Follow up in 5 days</span></div>
-<div style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600">Decision</span><span style="color:#4B5B78">Open</span></div>
-</div>
-</div>
-
-</div>
-<p style="margin:0;font-size:13px;color:#4B5B78;font-style:italic">Sample data. A fictional shop and fictional orders, shown to illustrate how the service works.</p>
-</div>
-
-<!-- BUILT AROUND THE DISPUTE -->
-<div style="background:#F5F8FF;border-top:1px solid #DCE3F0;border-bottom:1px solid #DCE3F0">
-<div style="max-width:1200px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;gap:32px">
+<!-- PROMPT MAKEOVER -->
+<section class="wrap sec" style="display:flex;flex-direction:column;gap:32px">
 <div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1D4ED8">Built around the dispute</p>
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;color:#14213D;text-wrap:balance">A different packet for each kind of dispute.</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#4B5B78">Each kind of claim needs different proof. Pick one to see what goes in the packet and how the response opens.</p>
+<p class="eyebrow">The difference</p>
+<h2>Same idea. Very different starting point.</h2>
+<p class="lead">Most people type one vague line into a video generator and hope. Toggle to see what a planned prompt looks like.</p>
 </div>
+<div><div class="seg" role="group" aria-label="Compare prompts"><button type="button" id="mk-a" aria-pressed="true">Typed by hand</button><button type="button" id="mk-b" aria-pressed="false">Planned by Evidix AI</button></div></div>
+<div style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+<div style="flex:2 1 420px;min-width:0"><div id="mk-box" class="mk bad"></div></div>
+<div class="card" style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:12px;align-self:flex-start">
+<span class="mono">What to look for</span>
+<div id="mk-notes" style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--muted)"></div>
+</div>
+</div>
+<p style="margin:0;font-size:13px;color:var(--muted);font-style:italic">Hand-written example for illustration. Results from any generator vary.</p>
+</section>
 
-<div style="display:flex;flex-wrap:wrap;gap:8px">
-<button type="button" class="tab" data-tab="inr" aria-pressed="true">Item not received</button>
-<button type="button" class="tab" data-tab="nad" aria-pressed="false">Not as described</button>
-<button type="button" class="tab" data-tab="cb" aria-pressed="false">Chargeback</button>
-</div>
-
-<div style="display:flex;flex-wrap:wrap;gap:24px;min-height:260px">
-<div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:12px">
-<div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4B5B78">What goes in the packet</div>
-<div data-if="isInr" style="display:contents">
-<div style="display:flex;flex-direction:column;gap:12px;font-size:17px">
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">Carrier tracking showing delivery</div>
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">Delivery confirmation or photo</div>
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">The shipping address on the order</div>
-<div>The full message history with the buyer</div>
-</div>
-</div>
-<div data-if="isNad" style="display:contents" hidden>
-<div style="display:flex;flex-direction:column;gap:12px;font-size:17px">
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">The listing photos and description</div>
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">Photos of the item before it shipped</div>
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">Your return policy as shown on the listing</div>
-<div>The full message history with the buyer</div>
-</div>
-</div>
-<div data-if="isCb" style="display:contents" hidden>
-<div style="display:flex;flex-direction:column;gap:12px;font-size:17px">
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">The order record and payment details</div>
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">Proof of delivery</div>
-<div style="padding-bottom:12px;border-bottom:1px solid #DCE3F0">Customer messages about the order</div>
-<div>Your refund policy and any refund already given</div>
-</div>
-</div>
-</div>
-
-<div style="flex:1 1 320px;min-width:0;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-<div style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:22px">How the response opens</div>
-<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#7A4A00">Sample data</span>
-</div>
-<div data-if="isInr" style="display:contents">
-<p style="margin:0;font-size:16px;line-height:1.65;color:#14213D">Order #1041 was delivered on March 3 to the address on the order. The carrier's delivery record, a delivery photo and our full message thread with the buyer are attached.</p>
-</div>
-<div data-if="isNad" style="display:contents" hidden>
-<p style="margin:0;font-size:16px;line-height:1.65;color:#14213D">The item matches the listing. The listing photos and description are attached, along with photos of the item taken before it shipped and the return policy shown on the listing.</p>
-</div>
-<div data-if="isCb" style="display:contents" hidden>
-<p style="margin:0;font-size:16px;line-height:1.65;color:#14213D">This order was fulfilled as placed. The order record, proof of delivery and the customer's messages are attached, along with our refund policy and the refund already issued.</p>
-</div>
-<div style="font-size:13px;color:#4B5B78">You can edit this draft before you approve it.</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- YOU STAY IN CONTROL -->
-<div style="background:#14213D;color:#FFFFFF">
-<div style="max-width:1200px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;gap:40px">
+<!-- SHAPE -->
+<section class="band"><div class="wrap sec" style="display:flex;flex-direction:column;gap:32px">
 <div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#9DBBFF">You stay in control</p>
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">Evidix AI prepares. You decide.</h2>
+<p class="eyebrow">Shape your plan</p>
+<h2>Your choices change the whole plan.</h2>
+<p class="lead">Style, mood, length and shape each steer how scenes are framed, lit and split into clips. Try the settings and watch the plan structure change.</p>
 </div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px 28px">
-<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #6C97F5;padding-top:16px">
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:26px">You send every response yourself.</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#C9D6F2">Evidix AI never contacts a platform or a buyer for you.</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #6C97F5;padding-top:16px">
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:26px">You can edit any draft.</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#C9D6F2">Change the wording or swap the evidence before you approve.</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #6C97F5;padding-top:16px">
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:26px">You see every source.</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#C9D6F2">Each claim in a response links to the record it came from.</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #6C97F5;padding-top:16px">
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:26px">You can stop any case.</h3>
-<p style="margin:0;font-size:16px;line-height:1.6;color:#C9D6F2">Close or delete a case whenever you like.</p>
-</div>
-</div>
-</div>
-</div>
-
-<!-- SECURITY -->
-<div id="security" style="max-width:1200px;margin:0 auto;padding:88px 24px;display:flex;flex-direction:column;gap:40px">
-<div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1D4ED8">Security and privacy</p>
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;color:#14213D;text-wrap:balance">Careful with your shop and your customers' data.</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#4B5B78">Evidix AI only sees what you choose to add to a case. It does not connect to your shop, and we never ask for your marketplace password.</p>
-</div>
-
 <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
-<div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:28px">
-<div style="display:flex;flex-direction:column;gap:12px">
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:26px">Planned safeguards</h3>
-<div style="display:flex;flex-direction:column;font-size:16px">
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">You choose what to upload, and nothing else is read</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">Encryption in transit and at rest</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">Each shop's data kept separate, with its own access</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">A log of every view and every action</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0;border-bottom:1px solid #DCE3F0">Nothing is sent for you</div>
+<div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:20px" id="shape-controls"></div>
+<div class="card" style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px" id="shape-out"></div>
 </div>
-</div>
-<div style="display:flex;flex-direction:column;gap:12px">
-<h3 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:26px">What we never do</h3>
-<div style="display:flex;flex-direction:column;font-size:16px">
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">We never contact a platform or a buyer on your behalf.</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">We never sell or share your customers' information.</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0">We never use one shop's data to train models for another.</div>
-<div style="padding:11px 0;border-top:1px solid #DCE3F0;border-bottom:1px solid #DCE3F0">We never take a percentage of what you win back.</div>
-</div>
-<p style="margin:0;font-size:14px;color:#4B5B78">We do not claim a security certification we do not hold. This is what we do instead.</p>
-</div>
-</div>
+<p style="margin:0;font-size:13px;color:var(--muted);font-style:italic">Illustrates how settings shape a plan. The actual plan is written by AI for your specific idea.</p>
+</div></section>
 
-<div style="flex:1 1 360px;min-width:0;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 18px 40px -28px rgba(20,33,61,0.35)">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-<div style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:22px">Activity log, case D-2041</div>
-<span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#7A4A00">Sample data</span>
+<!-- FEATURES -->
+<section id="features" class="wrap sec" style="display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
+<p class="eyebrow">Features</p>
+<h2>Everything between "I have an idea" and "I'm ready to generate."</h2>
 </div>
-<div style="overflow-x:auto">
-<table style="width:100%;border-collapse:collapse;font-size:14px;min-width:400px">
-<thead>
-<tr style="text-align:left;color:#4B5B78;font-size:12px;letter-spacing:0.06em;text-transform:uppercase">
-<th style="padding:8px 8px 8px 0;font-weight:500;border-bottom:1px solid #DCE3F0">Action</th>
-<th style="padding:8px;font-weight:500;border-bottom:1px solid #DCE3F0">Who</th>
-<th style="padding:8px 0 8px 8px;font-weight:500;border-bottom:1px solid #DCE3F0">Time</th>
-</tr>
-</thead>
-<tbody style="font-variant-numeric:tabular-nums">
-<tr><td style="padding:10px 8px 10px 0;border-bottom:1px solid #E8EDF7">Viewed order #1041</td><td style="padding:10px 8px;border-bottom:1px solid #E8EDF7">System</td><td style="padding:10px 0 10px 8px;border-bottom:1px solid #E8EDF7;font-family:'IBM Plex Mono',ui-monospace,monospace">09:02</td></tr>
-<tr><td style="padding:10px 8px 10px 0;border-bottom:1px solid #E8EDF7">Built evidence packet</td><td style="padding:10px 8px;border-bottom:1px solid #E8EDF7">System</td><td style="padding:10px 0 10px 8px;border-bottom:1px solid #E8EDF7;font-family:'IBM Plex Mono',ui-monospace,monospace">09:03</td></tr>
-<tr><td style="padding:10px 8px 10px 0;border-bottom:1px solid #E8EDF7">Edited draft response</td><td style="padding:10px 8px;border-bottom:1px solid #E8EDF7">Shop owner</td><td style="padding:10px 0 10px 8px;border-bottom:1px solid #E8EDF7;font-family:'IBM Plex Mono',ui-monospace,monospace">09:11</td></tr>
-<tr><td style="padding:10px 8px 10px 0">Marked as reviewed</td><td style="padding:10px 8px">Shop owner</td><td style="padding:10px 0 10px 8px;font-family:'IBM Plex Mono',ui-monospace,monospace">09:14</td></tr>
-</tbody>
-</table>
+<div class="grid g3" id="feature-grid"></div>
+</section>
+
+<!-- WHO -->
+<section class="band"><div class="wrap sec" style="display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
+<p class="eyebrow">Who it's for</p>
+<h2>Built so a first-timer can use it.</h2>
+<p class="lead">No prompt-writing experience needed. You describe the idea; the plan and the prompts come back organized and ready to copy.</p>
 </div>
-</div>
-</div>
-</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px" id="audience"></div>
+</div></section>
 
 <!-- PRICING -->
-<div id="pricing" style="background:#F5F8FF;border-top:1px solid #DCE3F0;border-bottom:1px solid #DCE3F0">
-<div style="max-width:1200px;margin:0 auto;padding:80px 24px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
-<div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:16px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1D4ED8">Pricing model</p>
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;color:#14213D;text-wrap:balance">Plain pricing.</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#4B5B78">Evidix AI will be $49 a month, flat. We never charge per dispute and never take a percentage of what you win back, so the price does not rise when you recover more. Join the waitlist and we will email you when it opens.</p>
+<section id="pricing" class="wrap sec" style="display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
+<p class="eyebrow">Pricing</p>
+<h2>Simple monthly plans.</h2>
+<p class="lead">Planned launch pricing. Plans open to the waitlist first, and details may change before launch.</p>
 </div>
-<div style="flex:1 1 380px;min-width:0;background:#FFFFFF;border:1px solid #DCE3F0;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:4px">
-<div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#4B5B78;padding-bottom:10px">How the price is made up</div>
-<div style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid #DCE3F0;font-size:18px"><span>Monthly plan</span><strong>$49 a month</strong></div>
-<div style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid #DCE3F0;font-size:18px"><span>Fee per dispute</span><strong>None</strong></div>
-<div style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid #DCE3F0;font-size:18px"><span>Share of what you win back</span><strong>None</strong></div>
-<div style="padding-top:20px;border-top:1px solid #DCE3F0;display:flex;flex-direction:column;gap:10px;align-items:flex-start"><a data-cta href="#waitlist" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;background:#2563EB;color:#FFFFFF;border-radius:8px;font-weight:600;font-size:16px">Join the waitlist</a><span style="font-size:14px;color:#4B5B78">Planned price. It may change before launch.</span></div>
-</div>
-</div>
-</div>
+<div class="plans" id="plans"></div>
+<p style="margin:0;font-size:14px;color:var(--muted);max-width:760px">Evidix AI plans are for planning and prompt generation only. They do not include video-generation credits. Generating video requires your own account with Higgsfield or another provider, billed separately by them. Evidix AI is not affiliated with or endorsed by Higgsfield.</p>
+</section>
 
 <!-- FAQ -->
-<div id="faq" style="max-width:1200px;margin:0 auto;padding:88px 24px;display:flex;flex-wrap:wrap;gap:40px 64px">
-<div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:16px">
-<p style="margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#1D4ED8">Questions</p>
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-0.02em;color:#14213D;text-wrap:balance">Questions sellers ask first.</h2>
+<section id="faq" class="band"><div class="wrap sec" style="display:flex;flex-direction:column;gap:28px;max-width:900px">
+<div style="display:flex;flex-direction:column;gap:14px">
+<p class="eyebrow">Questions</p>
+<h2>Good questions</h2>
 </div>
-<div style="flex:2 1 520px;min-width:0;border-top:1px solid #DCE3F0">
-<details>
-<summary>What does Evidix AI do?</summary>
-<p>It helps you work disputes, returns and chargebacks. It builds the evidence packet for each one, drafts your response, tracks the deadline and follows the case to a decision.</p>
-</details>
-<details>
-<summary>Which marketplaces does it work with?</summary>
-<p>Evidix AI builds the packet from what you give it and the kind of dispute. It does not connect to your shop, so you stay in charge of what you share. Always check the marketplace's own requirements before you submit.</p>
-</details>
-<details>
-<summary>Does it send anything without me?</summary>
-<p>No. Evidix AI never contacts a platform or a buyer for you. You review each draft, edit it and send it yourself.</p>
-</details>
-<details>
-<summary>Can it promise I will win a dispute?</summary>
-<p>No. The platform or the card network makes the decision. Evidix AI makes sure your side is complete, on time and clearly presented. We do not promise a result.</p>
-</details>
-<details>
-<summary>Do I have to give you my password?</summary>
-<p>No. We never ask for your marketplace password, and Evidix AI does not connect to your shop. You choose what to upload for each case.</p>
-</details>
-<details>
-<summary>How do I get started?</summary>
-<p>Join the waitlist. When Evidix AI opens, we will email you, and you can start without booking a call.</p>
-</details>
-<details>
-<summary>Is it worth it for a small shop?</summary>
-<p>If you handle a few disputes, returns or chargebacks every month and each one eats an evening, it is worth a conversation. If you almost never have one, it probably is not for you yet.</p>
-</details>
-<details>
-<summary>Will Evidix AI see my customers' information?</summary>
-<p>Only what you add to a case. Please leave out anything a dispute does not need, and do not send customer information through this website or by email.</p>
-</details>
-<details>
-<summary>When does it open?</summary>
-<p>Evidix AI is being built now. Join the waitlist and we will email you when it opens.</p>
-</details>
+<div>
+<details><summary>Does Evidix AI make the video?</summary><p>No. Evidix AI creates the production plan and the prompts. You paste them into Higgsfield or another video generator to produce the video. We may add direct generation later, but it is not part of the first version.</p></details>
+<details><summary>Is this affiliated with Higgsfield?</summary><p>No. Evidix AI is an independent product. We write prompts designed to work well with Higgsfield, but we have no partnership with them and the subscription does not include Higgsfield credits.</p></details>
+<details><summary>Do I need to know how to write prompts?</summary><p>No. You describe your idea in plain language and choose a few settings such as style, duration and mood. Evidix AI does the structuring.</p></details>
+<details><summary>What about longer videos?</summary><p>Longer ideas are split into connected parts, each with its own prompt, so you can generate them one segment at a time and keep characters and settings consistent.</p></details>
+<details><summary>Can I use it right now?</summary><p>Not yet. We are building the first version and opening early access to the waitlist. Join with your email and we will let you know when it opens.</p></details>
+<details><summary>Will the video look exactly like the plan?</summary><p>No planning tool can promise that. AI video generators vary from run to run. Clear prompts, consistent character descriptions and reference images improve your odds, and that is what Evidix AI focuses on.</p></details>
 </div>
-</div>
+</div></section>
 
-<!-- BOOK A CALL -->
-<div id="waitlist" style="max-width:1200px;margin:0 auto;padding:0 24px 88px">
-<div style="background:#F5F8FF;border:1px solid #DCE3F0;border-radius:18px;padding:56px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+<!-- WAITLIST -->
+<section id="waitlist" class="wrap" style="padding-top:84px;padding-bottom:88px">
+<div style="background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:56px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
 <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:14px">
-<h2 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(34px,4.8vw,58px);line-height:1.04;letter-spacing:-0.025em;color:#14213D;text-wrap:balance">Get early access.</h2>
-<p style="margin:0;font-size:18px;line-height:1.6;color:#4B5B78;max-width:560px">Join the waitlist and be the first to try it when it opens.</p>
+<h2 style="font-size:clamp(34px,4.8vw,58px)">Get early access.</h2>
+<p style="margin:0;font-size:18px;line-height:1.6;color:var(--muted);max-width:560px">Join the waitlist and be first in line when Evidix AI opens.</p>
 </div>
-<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;flex:1 1 320px">
 <form id="waitlist-form" style="display:flex;flex-wrap:wrap;gap:10px;width:100%;max-width:440px">
 <label for="wl-email" style="position:absolute;left:-9999px">Email address</label>
-<input id="wl-email" type="email" required autocomplete="email" placeholder="you@example.com" style="flex:1 1 220px;min-width:0;min-height:52px;padding:0 16px;border:1px solid #B9CBF5;border-radius:8px;background:#FFFFFF;color:#14213D;font-family:'Inter',system-ui,sans-serif;font-size:16px">
-<button type="submit" style="min-height:52px;padding:0 26px;border:0;border-radius:8px;background:#2563EB;color:#FFFFFF;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:16px;cursor:pointer">Join the waitlist</button>
-<p id="wl-msg" role="status" style="margin:0;width:100%;min-height:20px;font-size:14px;color:#4B5B78"></p>
+<input id="wl-email" type="email" required autocomplete="email" placeholder="you@example.com" style="flex:1 1 220px;min-width:0;min-height:52px;padding:0 16px;border:1px solid var(--line2);border-radius:8px;background:#fff;color:var(--ink);font-family:inherit;font-size:16px">
+<button type="submit" class="btn pri" style="min-height:52px">Join the waitlist</button>
+<p id="wl-msg" role="status" style="margin:0;width:100%;min-height:20px;font-size:14px;color:var(--muted)"></p>
 </form>
-<p style="margin:0;font-size:14px;color:#4B5B78;max-width:380px">This website does not collect customer or order information. Please do not send any through it or by email.</p>
+<p style="margin:0;font-size:14px;color:var(--muted);max-width:380px">We will only use your email to tell you when Evidix AI opens.</p>
 </div>
 </div>
-</div>
+</section>
 
 <!-- FOOTER -->
-<div style="border-top:1px solid #DCE3F0">
-<div style="max-width:1200px;margin:0 auto;padding:32px 24px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:14px;color:#4B5B78">
+<footer style="border-top:1px solid var(--line)">
+<div class="wrap" style="padding-top:32px;padding-bottom:40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:14px;color:var(--muted)">
 <div style="display:flex;flex-direction:column;gap:4px">
-<strong style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:20px;color:#14213D">Evidix AI</strong>
-<span>Dispute evidence packets for online sellers.</span>
+<strong style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:20px;color:var(--ink)">Evidix AI</strong>
+<span>AI video production planning.</span>
 </div>
-<div style="display:flex;flex-direction:column;gap:4px;max-width:460px">
-<span>Evidix AI is not affiliated with any marketplace.</span>
+<div style="display:flex;flex-direction:column;gap:4px;max-width:480px">
+<span>Not affiliated with Higgsfield or any video generation provider.</span>
 <span>© 2026 Evidix AI. All rights reserved.</span>
 </div>
 </div>
-</div>
+</footer>
 
 </div>
 <script>
 (function () {
-  var state = { tab: 'inr', approved: false };
-  var map = { pending: function () { return !state.approved; }, approved: function () { return state.approved; },
-              isInr: function () { return state.tab === 'inr'; }, isNad: function () { return state.tab === 'nad'; },
-              isCb: function () { return state.tab === 'cb'; } };
+  /* ---- Configurable plan data. Change prices and limits here only. ---- */
+  var PLANS = [
+    { name: 'Free', price: 0, blurb: 'Try it on a couple of ideas.', features: ['2 sample project generations', 'Basic prompts', 'Limited access'] },
+    { name: 'Creator', price: 19, featured: true, blurb: 'For regular creators.', features: ['30 project generations monthly', 'Detailed cinematic prompts', 'Storyboards', 'Saved projects', 'Copy-ready prompts'] },
+    { name: 'Pro', price: 39, blurb: 'For heavier, multi-part projects.', features: ['100 project generations monthly', 'Advanced cinematic prompts', 'Multi-part video planning', 'Character consistency tools', 'Reference image guidance', 'Priority access to future features'] }
+  ];
+  var FEATURES = [
+    ['AI Storyboard Generator', 'Scene-by-scene breakdown with timestamps, actions and dialogue.', '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/>'],
+    ['Cinematic Prompt Builder', 'Turns each scene into a clear, detailed prompt without padding.', '<path d="M4 6h16M4 12h10M4 18h14"/>'],
+    ['Character Consistency Planning', 'One fixed description per character, reused in every prompt.', '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>'],
+    ['Dialogue and Script Generation', 'Short, natural lines that fit the time each scene has.', '<path d="M4 5h16v11H9l-5 4z"/>'],
+    ['Camera and Lighting Direction', 'Angles, movement and light written into every scene.', '<rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/>'],
+    ['Multi-Scene Video Planning', 'Longer ideas split into connected parts, each with its own prompt.', '<path d="M4 7h10M4 12h16M4 17h10"/><circle cx="18" cy="7" r="2"/><circle cx="18" cy="17" r="2"/>'],
+    ['Reference Image Guidance', 'Tells you which images would help, and for which scenes.', '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/>'],
+    ['Higgsfield-Optimized Prompts', 'Prompts written for Higgsfield. Copy and paste to generate.', '<path d="M9 9h10v10H9z"/><path d="M5 15V5h10"/>'],
+    ['Saved Projects and Prompt History', 'Come back to any plan, tweak it and copy again.', '<path d="M6 3h9l4 4v14H6z"/><path d="M9 13h7M9 17h7"/>']
+  ];
+  var AUDIENCE = ['TikTok, Reels and Shorts creators', 'Beginners new to AI video', 'Entrepreneurs making ads', 'Freelancers offering AI video', 'E-commerce sellers', 'Social media marketers', 'Animated story and short film makers'];
+  var DEMOS = {
+    ad: {
+      idea: 'A 15-second cinematic ad for a matte-black water bottle, vertical, luxury feel.',
+      scenes: [['0–5s', 'Macro push-in', 'Condensation beads run down the bottle on a dark stone counter.'], ['5–10s', 'Slow orbit', 'A hand lifts the bottle; warm rim light traces its edge.'], ['10–15s', 'Locked-off hero', 'Bottle centered, logo sharp. Voiceover: "Stay clear."']],
+      prompt: 'Vertical 9:16, luxury product commercial. Matte-black steel bottle on dark stone, soft warm rim light, shallow depth of field. Slow macro push-in on condensation, then a smooth 90° orbit as a hand lifts the bottle. Logo stays sharp and readable. Calm, premium tone.'
+    },
+    story: {
+      idea: 'A 30-second animated story about a shy robot who finds a lost kitten in the rain.',
+      scenes: [['0–10s', 'Wide, low angle', 'Rain on a neon alley. A small rusty robot trudges alone.'], ['10–20s', 'Close-up', 'A kitten mews under a crate. The robot kneels. "You are lost too."'], ['20–30s', 'Tracking shot', 'The robot shields the kitten with its open chest panel and walks on.']],
+      prompt: '16:9, 3D animated short, cinematic rain. Robot "Bolt": small, rusty orange, round blue eyes, one dented antenna. Same design in every shot. Wide low angle in a neon alley, then a gentle close-up as Bolt kneels. Soft teal and magenta lighting.'
+    },
+    ugc: {
+      idea: 'A 15-second UGC-style clip of a student showing a budgeting app, upbeat and casual.',
+      scenes: [['0–5s', 'Selfie, handheld', 'Student in a dorm room holds up a phone. "I finally stopped overspending."'], ['5–10s', 'Over-shoulder', 'Phone screen shows a simple budget chart; thumb scrolls.'], ['10–15s', 'Selfie close', 'Big smile. "Ten minutes a week. That\'s it."']],
+      prompt: '9:16, UGC style, natural window light, slight handheld shake. Young woman, 20s, curly dark hair, green hoodie, in a tidy dorm room. She speaks directly to camera, relaxed and upbeat. Phone screen stays simple and legible. No on-screen gibberish text.'
+    }
+  };
 
-  function render() {
-    document.querySelectorAll('[data-if]').forEach(function (el) {
-      var f = map[el.getAttribute('data-if')];
-      el.hidden = !(f && f());
-    });
-    document.querySelectorAll('.tab').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-tab') === state.tab ? 'true' : 'false');
-    });
-    var btn = document.getElementById('approve-btn');
-    if (btn) btn.textContent = state.approved ? 'Undo review' : 'Mark as reviewed';
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  /* Pricing */
+  el('plans').innerHTML = PLANS.map(function (p) {
+    return '<div class="card plan' + (p.featured ? ' feat' : '') + '">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3>' + esc(p.name) + '</h3>' + (p.featured ? '<span class="chip">Most popular</span>' : '') + '</div>' +
+      '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:Newsreader,Georgia,serif;font-size:52px;line-height:1;letter-spacing:-.02em">$' + p.price + '</span><span style="color:var(--muted)">/month</span></div>' +
+      '<p style="margin:0;color:var(--muted);font-size:15px">' + esc(p.blurb) + '</p>' +
+      '<ul>' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
+      '<a class="btn ' + (p.featured ? 'pri' : 'sec2') + '" style="margin-top:auto" href="#waitlist">Join the waitlist</a></div>';
+  }).join('');
+
+  /* Features */
+  el('feature-grid').innerHTML = FEATURES.map(function (f) {
+    return '<div class="card" style="display:flex;flex-direction:column;gap:12px"><div class="ico"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + f[2] + '</svg></div><h3 style="font-size:22px">' + esc(f[0]) + '</h3><p style="margin:0;font-size:15px;line-height:1.6;color:var(--muted)">' + esc(f[1]) + '</p></div>';
+  }).join('');
+
+  el('audience').innerHTML = AUDIENCE.map(function (a) {
+    return '<span style="padding:10px 16px;border:1px solid var(--line2);border-radius:999px;background:#fff;font-size:15px">' + esc(a) + '</span>';
+  }).join('');
+
+  /* Hero demo */
+  var current = 'ad';
+  var REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var typers = {};
+  function typeInto(node, text, speed) {
+    clearInterval(typers[node.id]); node.classList.remove('caret');
+    if (REDUCED) { node.textContent = text; return; }
+    var i = 0; node.textContent = ''; node.classList.add('caret');
+    typers[node.id] = setInterval(function () {
+      i += 2; node.textContent = text.slice(0, i);
+      if (i >= text.length) { clearInterval(typers[node.id]); node.classList.remove('caret'); }
+    }, speed || 14);
   }
-
-  document.querySelectorAll('.tab').forEach(function (b) {
-    b.addEventListener('click', function () { state.tab = b.getAttribute('data-tab'); render(); });
+  function renderDemo() {
+    var d = DEMOS[current];
+    typeInto(el('demo-idea'), d.idea, 18);
+    typeInto(el('demo-prompt'), d.prompt, 10);
+    el('demo-scenes').innerHTML = d.scenes.map(function (s) {
+      return '<div class="scene fade"><span class="mono" style="padding-top:2px">' + esc(s[0]) + '</span><span><b>' + esc(s[1]) + '.</b> ' + esc(s[2]) + '</span></div>';
+    }).join('');
+    document.querySelectorAll('#demo-tabs .tab').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-demo') === current ? 'true' : 'false');
+    });
+    el('demo-copy').textContent = 'Copy prompt';
+  }
+  var touched = false, order = ['ad', 'story', 'ugc'];
+  document.querySelectorAll('#demo-tabs .tab').forEach(function (b) {
+    b.addEventListener('click', function () { touched = true; current = b.getAttribute('data-demo'); renderDemo(); });
   });
-  var btn = document.getElementById('approve-btn');
-  if (btn) btn.addEventListener('click', function () { state.approved = !state.approved; render(); });
-  render();
+  if (!REDUCED) setInterval(function () {
+    if (touched || document.hidden) return;
+    current = order[(order.indexOf(current) + 1) % order.length]; renderDemo();
+  }, 9000);
+  el('demo-copy').addEventListener('click', function () {
+    var btn = el('demo-copy'), text = DEMOS[current].prompt;
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy prompt'; }, 1600); }
+    try { navigator.clipboard.writeText(text).then(done, function () { btn.textContent = 'Select and copy'; }); }
+    catch (e) { btn.textContent = 'Select and copy'; }
+  });
+  renderDemo();
 
-  // Waitlist: create a free form at formspree.io, copy its URL (looks like
-  // https://formspree.io/f/abcdwxyz) and paste it between the quotes.
-  var WAITLIST_ENDPOINT = "https://formspree.io/f/myewwyjj";
-  var form = document.getElementById('waitlist-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var msg = document.getElementById('wl-msg');
-      var email = document.getElementById('wl-email');
-      if (!WAITLIST_ENDPOINT) { msg.textContent = 'The waitlist is not connected yet. Please check back soon.'; return; }
-      msg.textContent = 'Sending...';
-      fetch(WAITLIST_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email.value })
-      }).then(function (r) {
-        if (r.ok) { msg.textContent = 'Thanks. You are on the list.'; form.reset(); }
-        else { msg.textContent = 'Something went wrong. Please try again.'; }
-      }).catch(function () { msg.textContent = 'Something went wrong. Please try again.'; });
-    });
+  /* Prompt makeover */
+  var BAD = 'a scary movie scene in a forest at night with a monster';
+  var GOOD = 'Cinematic 9:16, 15s, suspenseful, photorealistic.\nCHARACTER (same in every shot): Elena, 30s, short black hair, olive rain jacket, holding a flashlight with a cracked lens.\nSCENE 1 (0-8s): Foggy pine forest, cold blue moonlight. Slow push-in from behind Elena as she steps over roots. Distant branch snap. Elena (whispering): "Who is there?"\nSCENE 2 (8-15s): Low-angle close-up, flashlight flickers. A tall shadow slides behind the trees in the background.\nContinuity: same jacket, same flashlight, no on-screen text.';
+  var NOTES = {
+    a: ['No fixed look for the characters, so they change shot to shot.', 'No timing, so the generator guesses the pacing.', 'No camera or lighting direction.', 'No dialogue, so lines get invented or garbled.'],
+    b: ['Characters described once and repeated for consistency.', 'Each scene has a time range.', 'Camera movement and light are specified.', 'Dialogue is short enough to say in the time given.']
+  };
+  function showMk(which) {
+    var box = el('mk-box');
+    box.className = 'mk ' + (which === 'a' ? 'bad' : 'good');
+    box.style.whiteSpace = 'pre-wrap';
+    typeInto(box, which === 'a' ? BAD : GOOD, 6);
+    el('mk-a').setAttribute('aria-pressed', which === 'a'); el('mk-b').setAttribute('aria-pressed', which === 'b');
+    el('mk-notes').innerHTML = NOTES[which].map(function (n) { return '<div style="display:flex;gap:8px"><span style="color:' + (which === 'a' ? '#B04A4A' : '#14602F') + ';font-weight:700">' + (which === 'a' ? '×' : '✓') + '</span><span>' + esc(n) + '</span></div>'; }).join('');
   }
+  el('mk-a').addEventListener('click', function () { showMk('a'); });
+  el('mk-b').addEventListener('click', function () { showMk('b'); });
+  el('mk-box').id = 'mk-box'; showMk('a');
+
+  /* Shape explorer */
+  var SH = {
+    style: { 'Cinematic': ['Slow dolly, shallow depth of field', 'Motivated, contrasty, practical lights'], '3D Animation': ['Stylized lens, smooth character-driven moves', 'Soft global light, bold color'], 'Photorealistic': ['Natural handheld and locked-off mix', 'Real-world light, believable shadows'], 'Anime': ['Dynamic angles, speed lines on action', 'Flat bright light, dramatic rim light'], 'Product Commercial': ['Macro pushes and clean orbits', 'Studio softbox, crisp highlights'], 'UGC': ['Handheld selfie framing', 'Window light, slightly imperfect'] },
+    mood: { 'Suspenseful': 'Longer holds, tight framing, low-key light', 'Funny': 'Quick cuts, wide reaction shots, bright light', 'Emotional': 'Close-ups, slow pacing, warm tones', 'Inspirational': 'Rising crane moves, golden light', 'Dramatic': 'Strong contrast, deliberate camera moves', 'Luxury': 'Slow, smooth moves, rich dark tones' },
+    aspect: { '9:16': 'Vertical: subjects centered, action kept in the middle third', '16:9': 'Widescreen: room for wide establishing shots', '1:1': 'Square: tight, centered compositions' },
+    dur: [10, 15, 30, 60, 90]
+  };
+  var sh = { style: 'Cinematic', mood: 'Dramatic', aspect: '9:16', dur: 30 };
+  function chips(key, label, vals) {
+    return '<div><div class="mono" style="margin-bottom:8px">' + label + '</div><div style="display:flex;flex-wrap:wrap;gap:8px">' +
+      vals.map(function (v) { return '<button type="button" class="tab" data-k="' + key + '" data-v="' + esc(v) + '" aria-pressed="false">' + esc(v) + (key === 'dur' ? 's' : '') + '</button>'; }).join('') + '</div></div>';
+  }
+  el('shape-controls').innerHTML = chips('style', 'Video style', Object.keys(SH.style)) + chips('mood', 'Mood', Object.keys(SH.mood)) + chips('aspect', 'Aspect ratio', Object.keys(SH.aspect)) + chips('dur', 'Length', SH.dur);
+  function renderShape() {
+    document.querySelectorAll('#shape-controls .tab').forEach(function (b) { b.setAttribute('aria-pressed', String(sh[b.dataset.k]) === b.dataset.v ? 'true' : 'false'); });
+    var n = Math.ceil(sh.dur / 15), scenes = Math.max(2, Math.round(sh.dur / 6));
+    var bars = '';
+    for (var i = 0; i < n; i++) { var a = i * 15, e = Math.min(sh.dur, a + 15); bars += '<div style="flex:' + (e - a) + ' 1 0;min-width:0;background:#E4EDFF;border:1px solid var(--line2);border-radius:8px;padding:8px 6px;text-align:center"><div class="mono" style="font-size:10px">Part ' + (i + 1) + '</div><div style="font-size:13px;font-weight:600">' + a + '–' + e + 's</div></div>'; }
+    var rows = [['Camera', SH.style[sh.style][0]], ['Light', SH.style[sh.style][1]], ['Tone', SH.mood[sh.mood]], ['Framing', SH.aspect[sh.aspect]], ['Scenes', 'About ' + scenes + ' scenes across ' + sh.dur + ' seconds']];
+    el('shape-out').innerHTML = '<div class="fade"><span class="mono">Plan structure</span><div style="display:flex;gap:6px;margin:10px 0 6px">' + bars + '</div>' +
+      '<p style="margin:0 0 12px;font-size:13px;color:var(--muted)">' + (n > 1 ? 'Longer than one clip, so it is split into ' + n + ' connected prompts, each with its own Copy button.' : 'Fits in a single clip, so one prompt.') + '</p>' +
+      rows.map(function (r) { return '<div style="display:grid;grid-template-columns:76px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15px"><span class="mono" style="padding-top:3px">' + r[0] + '</span><span>' + esc(r[1]) + '</span></div>'; }).join('') + '</div>';
+  }
+  el('shape-controls').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (!b) return; sh[b.dataset.k] = b.dataset.k === 'dur' ? +b.dataset.v : b.dataset.v; renderShape(); });
+  renderShape();
+
+  /* Scroll reveal */
+  if (!REDUCED && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { threshold: 0.12 });
+    document.querySelectorAll('.card, section h2, .plan, #audience span, .eyebrow, details').forEach(function (n, k) { n.classList.add('rv'); n.style.transitionDelay = (k % 4) * 60 + 'ms'; io.observe(n); });
+  }
+
+  /* Waitlist (Formspree endpoint kept from the live site) */
+  var WAITLIST_ENDPOINT = "https://formspree.io/f/myewwyjj";
+  var form = el('waitlist-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = el('wl-msg'), email = el('wl-email');
+    if (!WAITLIST_ENDPOINT) { msg.textContent = 'The waitlist is not connected yet. Please check back soon.'; return; }
+    msg.textContent = 'Sending...';
+    fetch(WAITLIST_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email: email.value }) })
+      .then(function (r) { if (r.ok) { msg.textContent = 'Thanks. You are on the list.'; form.reset(); } else { msg.textContent = 'Something went wrong. Please try again.'; } })
+      .catch(function () { msg.textContent = 'Something went wrong. Please try again.'; });
+  });
 })();
 </script>
 </body>
