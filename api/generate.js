@@ -39,6 +39,6 @@ export default async function handler(req, res) {
   } catch (err) {
     await db.rpc('refund_generation', { p_user: user.id }); // failed generations do not count
     if (err.code === 'NOT_CONFIGURED') return send(res, 503, { error: 'AI generation is not configured yet.' });
-    send(res, 502, { error: 'We could not generate your plan this time. It did not use a generation. Please try again. [debug: ' + String(err.message).slice(0, 400) + ']' });
+    send(res, 502, { error: 'We could not generate your plan this time. It did not use a generation. Please try again.' });
   }
 }
