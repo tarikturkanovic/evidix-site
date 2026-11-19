@@ -114,6 +114,7 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
       '<label class="f">Email<input type="email" id="ae" required autocomplete="email"></label>' +
       '<label class="f">Password<input type="password" id="ap" required minlength="8" autocomplete="' + (su ? 'new-password' : 'current-password') + '"></label>' +
       '<div class="msg ' + (ok ? 'ok' : 'err') + '" id="am" role="status">' + esc(msg || '') + '</div>' +
+      (su ? '<p style="font-size:13px;margin:0;color:#4B5B78">By signing up you agree to our <a href="/terms.html" target="_blank" rel="noopener">Terms</a> and <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>' : '') +
       '<button class="btn" type="submit">' + (su ? 'Sign up' : 'Log in') + '</button>' +
       '<button class="btn ghost" type="button" id="as">' + (su ? 'I already have an account' : 'Create an account') + '</button>' +
       '<a href="/" style="text-align:center;font-size:14px">Back to evidixai.com</a></form>';
