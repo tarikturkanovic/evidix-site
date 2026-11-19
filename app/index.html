@@ -170,7 +170,7 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
       '<textarea id="idea" maxlength="2000" placeholder="Describe your video idea... For example, a cinematic animated story about a college student who discovers an incredible business opportunity." aria-label="Video idea" style="font-size:17px;min-height:150px">' + esc(form.idea) + '</textarea>' +
       group('Video style', 'style', OPT.style) +
       '<div><div class="mono" style="margin-bottom:8px">Duration</div><div class="row" style="gap:8px">' + [10, 15, 30, 60].map(function (d) { return '<button type="button" class="chip" data-k="duration" data-v="' + d + '" aria-pressed="' + (!form.custom && form.duration === d) + '">' + d + ' seconds</button>'; }).join('') +
-      '<button type="button" class="chip" id="cust" aria-pressed="' + form.custom + '">Custom</button>' + (form.custom ? '<input type="number" id="cdur" min="5" max="180" value="' + form.duration + '" style="width:110px" aria-label="Custom seconds"> <span class="mono">seconds (5-180)</span>' : '') + '</div></div>' +
+      '<button type="button" class="chip" id="cust" aria-pressed="' + form.custom + '">Custom</button>' + (form.custom ? '<input type="number" id="cdur" min="5" max="60" value="' + form.duration + '" style="width:110px" aria-label="Custom seconds"> <span class="mono">seconds (5-60)</span>' : '') + '</div></div>' +
       group('Aspect ratio', 'aspect', OPT.aspect) + group('Mood', 'mood', OPT.mood) + group('Audio preference', 'audio', OPT.audio) +
       '<div class="grid two"><div><div class="mono" style="margin-bottom:8px">Target video generator</div><div class="row"><button type="button" class="chip" aria-pressed="true">Higgsfield</button></div></div>' +
       group('Prompt detail', 'detail', OPT.detail, function (v) { return v[0].toUpperCase() + v.slice(1); }) + '</div>' +
@@ -197,7 +197,7 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
     var err = $('#ge'), btn = $('#gen');
     form.idea = $('#idea').value;
     if (form.idea.trim().length < 10) { err.textContent = 'Please describe your idea in a sentence or two (at least 10 characters).'; return; }
-    if (form.duration < 5 || form.duration > 180) { err.textContent = 'Duration must be between 5 and 180 seconds.'; return; }
+    if (form.duration < 5 || form.duration > 60) { err.textContent = 'Duration must be between 5 and 60 seconds.'; return; }
     err.textContent = ''; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Building your plan (this can take up to a minute)...';
     api('generate', { settings: { idea: form.idea.trim(), style: form.style, duration: form.duration, aspect: form.aspect, mood: form.mood, audio: form.audio, detail: form.detail, generator: 'Higgsfield' } })
       .then(function (r) { form.idea = ''; return refreshMe().then(function () { location.hash = '#/project/' + r.projectId; }); })
