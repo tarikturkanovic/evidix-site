@@ -26,7 +26,8 @@ export default async function handler(req, res) {
   if (key !== 'free' && !['active', 'trialing'].includes(profile.subscription_status)) return send(res, 402, { error: 'Your subscription is not active.' });
   if (!plan.detail.includes(settings.detail)) return send(res, 403, { error: `Your plan does not include ${settings.detail} prompts. Choose a lower detail level or upgrade.` });
 
-  const { data: allowed } = await db.rpc('consume_generation', { p_user: user.id, p_limit: plan.monthlyGenerations });
+  const { data: allowed, error: rpcError } = await db.rpc('consume_generation', { p_user: user.id, p_limit: plan.monthlyGenerations });
+  if (rpcError) { console.error('[consume_generation]', rpcError.message); return send(res, 500, { error: 'Something went wrong on our side. Please try again.' }); }
   if (!allowed) return send(res, 429, { error: 'You have used all your generations for this period.', code: 'LIMIT' });
 
   try {
