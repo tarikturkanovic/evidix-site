@@ -199,7 +199,7 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
     form.idea = $('#idea').value;
     if (form.idea.trim().length < 10) { err.textContent = 'Please describe your idea in a sentence or two (at least 10 characters).'; return; }
     if (form.duration < 5 || form.duration > 60) { err.textContent = 'Duration must be between 5 and 60 seconds.'; return; }
-    err.textContent = ''; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Building your plan (this can take up to a minute)...';
+    err.textContent = ''; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Building your plan (this takes 1-2 minutes, please keep this page open)...';
     api('generate', { settings: { idea: form.idea.trim(), style: form.style, duration: form.duration, aspect: form.aspect, mood: form.mood, audio: form.audio, detail: form.detail, generator: 'Higgsfield' } })
       .then(function (r) { form.idea = ''; return refreshMe().then(function () { location.hash = '#/project/' + r.projectId; }); })
       .catch(function (e) { btn.disabled = false; btn.textContent = 'Generate My Video Plan'; err.textContent = e.message; if (e.status === 429) refreshMe(); });
