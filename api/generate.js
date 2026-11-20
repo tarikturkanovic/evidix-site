@@ -1,5 +1,5 @@
 import { PLANS } from '../lib/plans.js';
-import { validateSettings, generatePlan } from '../lib/generate.js';
+import { validateSettings, generatePlan, fixPartPrompt } from '../lib/generate.js';
 import { admin, authUser, send } from '../lib/server.js';
 
 // POST /api/generate  { settings, projectId?, sceneIndexes? }
@@ -19,6 +19,12 @@ export default async function handler(req, res) {
   }
   const problems = validateSettings(settings);
   if (problems.length) return send(res, 400, { error: problems.join('; ') });
+  const fix = body.fix;
+  if (fix) {
+    if (!body.projectId || !previous?.parts) return send(res, 400, { error: 'Open a project to fix a prompt.' });
+    if (!Number.isInteger(fix.part) || fix.part < 0 || fix.part >= previous.parts.length) return send(res, 400, { error: 'Invalid part.' });
+    if (typeof fix.note !== 'string' || fix.note.trim().length < 5 || fix.note.length > 600) return send(res, 400, { error: 'Describe the problem in 5-600 characters.' });
+  }
   if (body.sceneIndexes && !(Array.isArray(body.sceneIndexes) && body.sceneIndexes.every(Number.isInteger))) return send(res, 400, { error: 'Invalid scene selection.' });
 
   const { data: profile } = await db.from('profiles').select('plan, subscription_status').eq('id', user.id).single();
@@ -31,7 +37,9 @@ export default async function handler(req, res) {
   if (!allowed) return send(res, 429, { error: 'You have used all your generations for this period.', code: 'LIMIT' });
 
   try {
-    const result = await generatePlan(settings, { previousPlan: previous, sceneIndexes: body.sceneIndexes, attempts: 2 });
+    const result = fix
+      ? await fixPartPrompt(settings, previous, fix.part, fix.note.trim())
+      : await generatePlan(settings, { previousPlan: previous, sceneIndexes: body.sceneIndexes });
     const row = { user_id: user.id, title: result.title, idea: settings.idea, settings, plan: result, updated_at: new Date().toISOString() };
     const q = body.projectId ? db.from('projects').update(row).eq('id', body.projectId).eq('user_id', user.id) : db.from('projects').insert(row);
     const { data: saved, error } = await q.select('id').single();
