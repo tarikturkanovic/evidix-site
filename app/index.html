@@ -237,6 +237,18 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
     return b;
   }
 
+  function wc(t) { return String(t || '').split(/\s+/).filter(Boolean).length; }
+  function briefHtml(pl) {
+    var b = pl.brief; if (!b) return '';
+    var row = function (k, v) { return v ? '<div class="kv"><span class="mono">' + k + '</span><span>' + esc(v) + '</span></div>' : ''; };
+    var list = function (k, a) { return a && a.length ? '<div class="kv"><span class="mono">' + k + '</span><span>' + a.map(esc).join('<br>') + '</span></div>' : ''; };
+    var e = b.environment || {};
+    return '<details class="card" open><summary style="cursor:pointer"><h2 style="display:inline">Director\'s Brief</h2></summary><div style="margin-top:12px">' +
+      row('Objective', b.objective) + row('Audience', b.audience) + row('Creative direction', b.creativeDirection) + row('Pacing', b.pacing) +
+      row('Location', e.location) + row('Architecture', e.architecture) + row('Props', e.props) + row('Time of day', e.timeOfDay) + row('Environment light', e.lighting) + row('Atmosphere', e.atmosphere) + row('Layout', e.layout) +
+      row('Cinematography', b.cinematography) + row('Lighting & rendering', b.lightingRendering) + row('Audio plan', b.audioPlan) +
+      list('Continuity rules', b.continuityRules) + list('Quality safeguards', b.qualitySafeguards) + '</div></details>';
+  }
   function viewProject(id) {
     $('#main').innerHTML = 'Loading...';
     sb.from('projects').select('*').eq('id', id).single().then(function (r) {
@@ -247,6 +259,7 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
         '<div class="row"><button class="btn ghost sm" id="improve">Improve entire plan</button><button class="btn ghost sm" id="del">Delete</button></div></div>' +
         '<div class="msg err" id="pe" role="alert"></div>' +
         '<div class="card"><div class="mono" style="margin-bottom:8px">Project overview</div><p style="margin:0;font-size:17px">' + esc(pl.overview) + '</p><p style="margin:12px 0 0;font-size:13px;color:var(--muted)">Your idea: ' + esc(p.idea) + '</p></div>' +
+        briefHtml(pl) +
         '<div><h2 style="margin-bottom:12px">Video prompts</h2><div id="parts" class="grid"></div><p style="font-size:13px;color:var(--muted)">Copy a prompt, then paste it into the video generator. Videos are generated on Higgsfield with your own account there. Evidix AI is not affiliated with Higgsfield.</p></div>' +
         '<div><h2 style="margin-bottom:12px">Storyboard</h2><div class="card" id="scenes"></div></div>' +
         '<div><h2 style="margin-bottom:12px">Characters</h2><div class="grid two">' + pl.characters.map(charCard).join('') + '</div></div>' +
@@ -254,8 +267,20 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
       $('#main').innerHTML = h;
       pl.parts.forEach(function (x, i) {
         var d = document.createElement('div'); d.className = 'card';
-        d.innerHTML = '<div class="row" style="justify-content:space-between;margin-bottom:10px"><b>Part ' + (i + 1) + ' — ' + x.start + '–' + x.end + ' seconds</b><span class="row" id="pb' + i + '"></span></div><div class="prompt">' + esc(x.prompt) + '</div>';
+        d.innerHTML = '<div class="row" style="justify-content:space-between;margin-bottom:10px"><b>Part ' + (i + 1) + ' — ' + x.start + '–' + x.end + ' seconds</b><span class="row" id="pb' + i + '"></span></div><div class="mono" style="margin-bottom:8px">' + wc(x.prompt) + ' words</div><div class="prompt">' + esc(x.prompt) + '</div>' +
+          '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Fix My Prompt</summary><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px"><p style="margin:0;font-size:13px;color:var(--muted)">Tested this in Higgsfield and something went wrong? Describe what happened and we will rewrite this part. Uses 1 generation.</p><textarea class="fxn" rows="3" maxlength="600" placeholder="e.g. The characters spoke gibberish, the laptop flipped around, it was too dark..." style="width:100%;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--line,#ccc);background:transparent;color:inherit"></textarea><div class="row"><button class="btn sm fxb">Fix this prompt</button></div></div></details>' +
+          (x.versions && x.versions.length ? '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--muted)">Previous versions (' + x.versions.length + ')</summary><div id="pv' + i + '" style="display:flex;flex-direction:column;gap:10px;margin-top:10px"></div></details>' : '');
         $('#parts').appendChild(d);
+        (x.versions || []).slice().reverse().forEach(function (v) {
+          var vd = document.createElement('div'); vd.className = 'card';
+          vd.innerHTML = '<div style="font-size:13px;color:var(--muted);margin-bottom:6px">Fix requested: ' + esc(v.note) + (v.changes ? '<br>' + esc(v.changes) : '') + '</div><div class="prompt">' + esc(v.prompt) + '</div><div class="row" style="margin-top:8px"></div>';
+          vd.querySelector('.row').appendChild(copyBtn(v.prompt)); d.querySelector('#pv' + i).appendChild(vd);
+        });
+        d.querySelector('.fxb').onclick = function () {
+          var b = this, note = d.querySelector('.fxn').value.trim();
+          if (note.length < 5) { $('#pe').textContent = 'Describe the problem in a few words first.'; return; }
+          regen({ fix: { part: i, note: note } }, b);
+        };
         var slot = d.querySelector('#pb' + i); slot.appendChild(copyBtn(x.prompt));
         var a = document.createElement('a'); a.className = 'btn ghost sm'; a.href = 'https://higgsfield.ai'; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Open Higgsfield'; slot.appendChild(a);
       });
@@ -276,7 +301,7 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:60
     });
   }
   function charCard(c) {
-    return '<div class="card"><h3>' + esc(c.name) + '</h3><div class="kv"><span class="mono">Look</span><span>' + esc(c.appearance) + '</span></div><div class="kv"><span class="mono">Clothing</span><span>' + esc(c.clothing) + '</span></div><div class="kv"><span class="mono">Personality</span><span>' + esc(c.personality) + '</span></div></div>';
+    return '<div class="card"><h3>' + esc(c.name) + '</h3><div class="kv"><span class="mono">Look</span><span>' + esc(c.appearance) + '</span></div><div class="kv"><span class="mono">Clothing</span><span>' + esc(c.clothing) + '</span></div><div class="kv"><span class="mono">Personality</span><span>' + esc(c.personality) + '</span></div>' + (c.voice ? '<div class="kv"><span class="mono">Voice</span><span>' + esc(c.voice) + '</span></div>' : '') + (c.performance ? '<div class="kv"><span class="mono">Performance</span><span>' + esc(c.performance) + '</span></div>' : '') + '</div>';
   }
   function viewLibrary() {
     $('#main').innerHTML = '<div style="display:flex;flex-direction:column;gap:20px"><h1>Prompt Library</h1><div id="lib" class="grid">Loading...</div></div>';
