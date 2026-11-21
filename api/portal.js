@@ -9,8 +9,13 @@ export default async function handler(req, res) {
   if (!user) return send(res, 401, { error: 'Please sign in.' });
   const { data: p } = await db.from('profiles').select('stripe_customer_id').eq('id', user.id).single();
   if (!p?.stripe_customer_id) return send(res, 400, { error: 'No billing account yet.' });
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  const site = process.env.SITE_URL || 'https://evidixai.com';
-  const s = await stripe.billingPortal.sessions.create({ customer: p.stripe_customer_id, return_url: `${site}/app/#/subscription` });
-  send(res, 200, { url: s.url });
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const site = process.env.SITE_URL || 'https://evidixai.com';
+    const s = await stripe.billingPortal.sessions.create({ customer: p.stripe_customer_id, return_url: `${site}/app/#/subscription` });
+    return send(res, 200, { url: s.url });
+  } catch (e) {
+    console.error('[portal failed]', e && e.code, e && e.type, e && e.message);
+    return send(res, 502, { error: 'Could not open the billing portal (' + ((e && (e.code || e.type)) || 'error') + '). ' + String((e && e.message) || '').slice(0, 140) });
+  }
 }
