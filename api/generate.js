@@ -1,9 +1,10 @@
-import { PLANS } from '../lib/plans.js';
+import { PLANS, COSTS } from '../lib/plans.js';
 import { validateSettings, generatePlan, fixPartPrompt } from '../lib/generate.js';
+import { maybeRefill } from '../lib/credits.js';
 import { admin, authUser, send } from '../lib/server.js';
 
-// POST /api/generate  { settings, projectId?, sceneIndexes? }
-// Requires a signed-in user. Limits are enforced here with an atomic database call.
+// POST /api/generate  { settings, projectId?, sceneIndexes?, fix? }
+// Requires a signed-in user. Credits are spent here with an atomic database call.
 export default async function handler(req, res) {
   if (req.method !== 'POST') return send(res, 405, { error: 'Method not allowed.' });
   const db = admin();
@@ -27,14 +28,16 @@ export default async function handler(req, res) {
   }
   if (body.sceneIndexes && !(Array.isArray(body.sceneIndexes) && body.sceneIndexes.every(Number.isInteger))) return send(res, 400, { error: 'Invalid scene selection.' });
 
-  const { data: profile } = await db.from('profiles').select('plan, subscription_status').eq('id', user.id).single();
-  const key = profile?.plan || 'free', plan = PLANS[key];
+  const { data: profile0 } = await db.from('profiles').select('plan, subscription_status, billing_interval, credits, credits_period_start, current_period_end').eq('id', user.id).single();
+  const profile = await maybeRefill(db, user.id, profile0);
+  const key = profile?.plan || 'free', plan = PLANS[key] || PLANS.free;
   if (key !== 'free' && !['active', 'trialing'].includes(profile.subscription_status)) return send(res, 402, { error: 'Your subscription is not active.' });
   if (!plan.detail.includes(settings.detail)) return send(res, 403, { error: `Your plan does not include ${settings.detail} prompts. Choose a lower detail level or upgrade.` });
 
-  const { data: allowed, error: rpcError } = await db.rpc('consume_generation', { p_user: user.id, p_limit: plan.monthlyGenerations });
-  if (rpcError) { console.error('[consume_generation]', rpcError.message); return send(res, 500, { error: 'Something went wrong on our side. Please try again.' }); }
-  if (!allowed) return send(res, 429, { error: 'You have used all your generations for this period.', code: 'LIMIT' });
+  const cost = fix ? COSTS.fix : (body.sceneIndexes && body.sceneIndexes.length ? COSTS.scene : (body.projectId ? COSTS.improve : COSTS.plan));
+  const { data: balance, error: rpcError } = await db.rpc('spend_credits', { p_user: user.id, p_cost: cost, p_reason: fix ? 'fix_prompt' : (body.projectId ? 'regenerate' : 'new_plan'), p_ref: body.projectId || null });
+  if (rpcError) { console.error('[spend_credits]', rpcError.message); return send(res, 500, { error: 'Something went wrong on our side. Please try again.' }); }
+  if (balance < 0) return send(res, 402, { error: `You need ${cost} credits for this and don't have enough. Top up or upgrade your plan.`, code: 'CREDITS', cost });
 
   try {
     const result = fix
@@ -44,11 +47,11 @@ export default async function handler(req, res) {
     const q = body.projectId ? db.from('projects').update(row).eq('id', body.projectId).eq('user_id', user.id) : db.from('projects').insert(row);
     const { data: saved, error } = await q.select('id').single();
     if (error) throw error;
-    send(res, 200, { projectId: saved.id });
+    send(res, 200, { projectId: saved.id, credits: balance, spent: cost });
   } catch (err) {
-    await db.rpc('refund_generation', { p_user: user.id }); // failed generations do not count
+    await db.rpc('add_credits', { p_user: user.id, p_amount: cost, p_reason: 'refund_failed_generation', p_ref: body.projectId || null }); // failed generations cost nothing
     if (err.code === 'NOT_CONFIGURED') return send(res, 503, { error: 'AI generation is not configured yet.' });
     console.error('[generate failed]', err.message);
-    send(res, 502, { error: 'We could not generate your plan this time. It did not use a generation. Please try again.', category: err.category || 'unknown' });
+    send(res, 502, { error: 'We could not generate your plan this time. Your credits were returned. Please try again.', category: err.category || 'unknown' });
   }
 }
