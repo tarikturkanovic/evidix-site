@@ -292,8 +292,38 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
         go.disabled = false; rEntry(list, j.render); refreshMe().catch(function () {});
       }).catch(function (e) { go.disabled = false; msg.textContent = e.message; });
     };
+    if (!me || !me.plan || me.plan === 'free') {
+      sel.style.display = 'none';
+      var up = document.createElement('a'); up.className = 'btn sm'; up.href = '#/subscription'; up.textContent = 'Choose a plan to render · from $39/month';
+      go.replaceWith(up);
+      box.querySelector('p').textContent = 'Rendering makes a ' + dur + '-second video with Seedance 2.5 and needs a paid plan. Pick a plan, then come back and press Render.';
+    }
     var anchor = card.querySelector('details'); card.insertBefore(box, anchor);
     rendersP.then(function (all) { all.filter(function (r) { return r.part === i; }).reverse().forEach(function (r) { rEntry(list, r); }); });
+  }
+  function projectTabs() {
+    var root = $('#main').firstElementChild; if (!root) return;
+    var kids = Array.prototype.slice.call(root.children), rest = kids.slice(2), groups = { video: [], plan: [], story: [], chars: [] };
+    rest.forEach(function (k) {
+      var h = k.querySelector('h2'), name = h ? h.textContent : '';
+      if (k.querySelector('#parts')) groups.video.push(k);
+      else if (k.querySelector('#scenes')) groups.story.push(k);
+      else if (name === 'Characters') groups.chars.push(k);
+      else groups.plan.push(k);
+    });
+    var steps = document.createElement('div'); steps.className = 'card';
+    steps.innerHTML = '<div style="font-weight:600;margin-bottom:8px">How to make your video</div><ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)"><li>Each part below is one clip of up to 15 seconds. Pick 480p or 720p under a part and press <b>Render</b>. The credit cost is shown on the button.</li><li>Wait a few minutes. The video appears right under that part. You can leave the page and come back.</li><li>Download every part, then join them in any video editor (CapCut works well). Prefer another tool? Use <b>Copy Prompt</b> instead.</li></ol>';
+    groups.video[0].parentNode.insertBefore(steps, groups.video[0]); groups.video.unshift(steps);
+    var bar = document.createElement('div'); bar.className = 'row'; bar.style.cssText = 'gap:8px;flex-wrap:wrap';
+    var tabs = [['video', 'Make video'], ['plan', 'Plan'], ['story', 'Storyboard'], ['chars', 'Characters']];
+    function show(key) {
+      tabs.forEach(function (tb) {
+        groups[tb[0]].forEach(function (el) { el.style.display = tb[0] === key ? '' : 'none'; });
+        bar.querySelector('[data-t="' + tb[0] + '"]').className = tb[0] === key ? 'btn sm' : 'btn ghost sm';
+      });
+    }
+    tabs.forEach(function (tb) { var b = document.createElement('button'); b.type = 'button'; b.dataset.t = tb[0]; b.textContent = tb[1]; b.onclick = function () { show(tb[0]); }; bar.appendChild(b); });
+    root.insertBefore(bar, rest[0]); show('video');
   }
   function viewProject(id) {
     $('#main').innerHTML = 'Loading...';
@@ -341,6 +371,7 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
           .catch(function (e) { btn.disabled = false; btn.textContent = old; pe.textContent = e.message; });
       }
       $('#improve').onclick = function () { regen({}, this); };
+      projectTabs();
       document.querySelectorAll('.rg').forEach(function (b) { b.onclick = function () { regen({ sceneIndexes: [+b.dataset.i] }, b); }; });
       $('#del').onclick = function () {
         var b = this; if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = 'Click again to delete'; return; }
