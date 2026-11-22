@@ -298,7 +298,7 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
       go.replaceWith(up);
       box.querySelector('p').textContent = 'Rendering makes a ' + dur + '-second video with Seedance 2.5 and needs a paid plan. Pick a plan, then come back and press Render.';
     }
-    var anchor = card.querySelector('details'); card.insertBefore(box, anchor);
+    var pm = card.children[1], pr = card.children[2], dt = document.createElement('details'); dt.style.marginTop = '12px'; dt.innerHTML = '<summary style="cursor:pointer;font-weight:600">Show prompt</summary>'; card.insertBefore(box, pm); card.insertBefore(dt, pm); dt.appendChild(pm); dt.appendChild(pr);
     rendersP.then(function (all) { all.filter(function (r) { return r.part === i; }).reverse().forEach(function (r) { rEntry(list, r); }); });
   }
   function projectTabs() {
