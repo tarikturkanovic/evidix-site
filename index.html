@@ -236,11 +236,12 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFE3FF 100%);-webkit-backgroun
 <section id="pricing" class="wrap sec" style="display:flex;flex-direction:column;gap:36px">
 <div style="display:flex;flex-direction:column;gap:14px;max-width:760px">
 <p class="eyebrow">Pricing</p>
-<h2>Simple monthly plans.</h2>
-<p class="lead">Start free with 2 plan generations, upgrade any time, cancel whenever you like.</p>
+<h2>Simple plans. Save 20% yearly.</h2>
+<p class="lead">Start free with 80 credits. Credits pay for plans, prompt fixes and video renders. Upgrade any time, cancel whenever you like.</p>
 </div>
+<div id="bill" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"></div>
 <div class="plans" id="plans"></div>
-<p style="margin:0;font-size:14px;color:var(--muted);max-width:760px">Evidix AI plans are for planning and prompt generation only. They do not include video-generation credits. Generating video requires your own account with Higgsfield or another provider, billed separately by them. Evidix AI is not affiliated with or endorsed by Higgsfield.</p>
+<p style="margin:0;font-size:14px;color:var(--muted);max-width:760px">Credits refill every month and unused credits do not roll over. Paid plans can render videos on the site (Seedance 2.5, from 25 credits per second at 480p) and buy top-up packs. You can also copy any prompt into another video generator. Evidix AI is not affiliated with or endorsed by Higgsfield.</p>
 </section>
 
 <!-- FAQ -->
@@ -250,11 +251,11 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFE3FF 100%);-webkit-backgroun
 <h2>Good questions</h2>
 </div>
 <div>
-<details><summary>Does Evidix AI make the video?</summary><p>No. Evidix AI creates the production plan and the prompts. You paste them into Higgsfield or another video generator to produce the video. We may add direct generation later, but it is not part of the first version.</p></details>
-<details><summary>Is this affiliated with Higgsfield?</summary><p>No. Evidix AI is an independent product. We write prompts designed to work well with Higgsfield, but we have no partnership with them and the subscription does not include Higgsfield credits.</p></details>
+<details><summary>Does Evidix AI make the video?</summary><p>Evidix AI plans your video and writes the prompts. On a paid plan you can also render each part on the site with Seedance 2.5, paid for with your credits. Or copy the prompts into any video generator you like. AI video varies from run to run, so results are not guaranteed.</p></details>
+<details><summary>Is this affiliated with Higgsfield?</summary><p>No. Evidix AI is an independent product. We write prompts designed to work well with Higgsfield, but we have no partnership with them. Rendering on the site uses their service and is paid for with Evidix credits.</p></details>
 <details><summary>Do I need to know how to write prompts?</summary><p>No. You describe your idea in plain language and choose a few settings such as style, duration and mood. Evidix AI does the structuring.</p></details>
 <details><summary>What about longer videos?</summary><p>Longer ideas are split into connected parts, each with its own prompt, so you can generate them one segment at a time and keep characters and settings consistent.</p></details>
-<details><summary>Can I use it right now?</summary><p>Yes. Create a free account at evidixai.com/app and generate your first video plan in a minute. Paid plans add more monthly generations and more detailed prompts.</p></details>
+<details><summary>Can I use it right now?</summary><p>Yes. Create a free account at evidixai.com/app and generate your first video plan in a minute. Paid plans add monthly credits, more detailed prompts and video rendering.</p></details>
 <details><summary>Will the video look exactly like the plan?</summary><p>No planning tool can promise that. AI video generators vary from run to run. Clear prompts, consistent character descriptions and reference images improve your odds, and that is what Evidix AI focuses on.</p></details>
 </div>
 </div></section>
@@ -293,9 +294,10 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFE3FF 100%);-webkit-backgroun
 (function () {
   /* ---- Configurable plan data. Change prices and limits here only. ---- */
   var PLANS = [
-    { name: 'Free', price: 0, blurb: 'Try it on a couple of ideas.', features: ['2 sample project generations', 'Basic prompts', 'Limited access'] },
-    { name: 'Creator', price: 39, featured: true, blurb: 'For regular creators.', features: ['30 project generations monthly', 'Detailed cinematic prompts', 'Storyboards', 'Saved projects', 'Copy-ready prompts'] },
-    { name: 'Pro', price: 79, blurb: 'For heavier, multi-part projects.', features: ['100 project generations monthly', 'Advanced cinematic prompts', 'Multi-part video planning', 'Character consistency tools', 'Reference image guidance', 'Priority access to future features'] }
+    { name: 'Free', price: 0, blurb: 'Try it on a couple of ideas.', features: ['80 credits to start', 'Basic prompts', 'Limited access'] },
+    { name: 'Creator', price: 39, featured: true, blurb: 'For regular creators.', features: ['2,000 credits every month', 'About 50 project plans a month', 'Detailed cinematic prompts', 'Storyboards and saved projects', 'Video rendering on the site'] },
+    { name: 'Pro', price: 79, blurb: 'For heavier, multi-part projects.', features: ['4,200 credits every month', 'Advanced cinematic prompts', 'Multi-part video planning', 'Character consistency tools', 'Reference image guidance', 'Video rendering on the site'] },
+    { name: 'Studio', price: 149, blurb: 'For studios and high volume.', features: ['8,000 credits every month', 'Everything in Pro', 'Lowest price per credit', 'Video rendering on the site'] }
   ];
   var FEATURES = [
     ['AI Storyboard Generator', 'Scene-by-scene breakdown with timestamps, actions and dialogue.', '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/>'],
@@ -331,14 +333,28 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFE3FF 100%);-webkit-backgroun
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
   /* Pricing */
-  el('plans').innerHTML = PLANS.map(function (p) {
-    return '<div class="card plan' + (p.featured ? ' feat' : '') + '">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3>' + esc(p.name) + '</h3>' + (p.featured ? '<span class="chip">Most popular</span>' : '') + '</div>' +
-      '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:Space Grotesk,Inter,sans-serif;font-size:52px;line-height:1;letter-spacing:-.02em">$' + p.price + '</span><span style="color:var(--muted)">/month</span></div>' +
-      '<p style="margin:0;color:var(--muted);font-size:15px">' + esc(p.blurb) + '</p>' +
-      '<ul>' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
-      '<a class="btn ' + (p.featured ? 'pri' : 'sec2') + '" style="margin-top:auto" href="' + (p.price === 0 ? "/app/" : "/app/#/subscription") + '">' + (p.price === 0 ? "Start free" : "Get " + p.name) + '</a></div>';
-  }).join('');
+  var yearly = true;
+  function money(n) { return '$' + (n % 1 ? n.toFixed(2) : n); }
+  function drawBill() {
+    var on = 'background:#2563EB;color:#fff;border-color:#2563EB', off = '';
+    el('bill').innerHTML = '<button type="button" class="btn sec2" id="bm" style="' + (yearly ? off : on) + '">Monthly</button><button type="button" class="btn sec2" id="by" style="' + (yearly ? on : off) + '">Yearly</button><span class="chip">Save 20%</span>';
+    el('bm').onclick = function () { yearly = false; drawBill(); drawPlans(); };
+    el('by').onclick = function () { yearly = true; drawBill(); drawPlans(); };
+  }
+  function drawPlans() {
+    el('plans').innerHTML = PLANS.map(function (p) {
+      var mo = p.price === 0 ? 0 : (yearly ? +(p.price * 0.8).toFixed(2) : p.price);
+      var note = p.price === 0 ? 'No card needed' : (yearly ? 'Billed ' + money(+(p.price * 12 * 0.8).toFixed(2)) + ' yearly' : 'Billed monthly');
+      return '<div class="card plan' + (p.featured ? ' feat' : '') + '">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3>' + esc(p.name) + '</h3>' + (p.featured ? '<span class="chip">Most popular</span>' : '') + '</div>' +
+        '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:Space Grotesk,Inter,sans-serif;font-size:52px;line-height:1;letter-spacing:-.02em">' + money(mo) + '</span><span style="color:var(--muted)">/month</span></div>' +
+        '<p style="margin:-6px 0 0;font-size:13px;color:var(--muted)">' + note + '</p>' +
+        '<p style="margin:0;color:var(--muted);font-size:15px">' + esc(p.blurb) + '</p>' +
+        '<ul>' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
+        '<a class="btn ' + (p.featured ? 'pri' : 'sec2') + '" style="margin-top:auto" href="' + (p.price === 0 ? '/app/' : '/app/#/subscription') + '">' + (p.price === 0 ? 'Start free' : 'Get ' + p.name) + '</a></div>';
+    }).join('');
+  }
+  drawBill(); drawPlans();
 
   /* Features */
   el('feature-grid').innerHTML = FEATURES.map(function (f) {
