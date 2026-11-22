@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Evidix AI | Turn any idea into an AI video production plan</title>
 <meta name="description" content="Evidix AI turns a simple idea into a storyboard, characters, dialogue, camera directions and copy-ready prompts for AI video generators like Higgsfield. Start free.">
-<meta name="theme-color" content="#07060D">
+<meta name="theme-color" content="#050913">
 <link rel="canonical" href="https://evidixai.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A78BFA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='3'/%3E%3Cpath d='M10 9.5v5l4.5-2.5z'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2360A5FA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='3'/%3E%3Cpath d='M10 9.5v5l4.5-2.5z'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Evidix AI">
 <meta property="og:title" content="Evidix AI | Your Imagination. Brought to Life.">
@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:wght@400;500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-:root{--bg:#07060D;--ink:#F3F1FF;--blue:#8B5CF6;--blue-d:#C4B5FD;--panel:#0F0D1A;--line:#241F3A;--line2:#3B3166;--muted:#A8A3C4;--sample-bg:rgba(251,191,36,.12);--sample-line:rgba(251,191,36,.35);--sample-ink:#FCD34D}
+:root{--bg:#050913;--ink:#EFF5FF;--blue:#3B82F6;--blue-d:#93C5FD;--panel:#0A1224;--line:#1B2742;--line2:#2A4170;--muted:#9FB0CC;--sample-bg:rgba(251,191,36,.12);--sample-line:rgba(251,191,36,.35);--sample-ink:#FCD34D}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5}
@@ -35,17 +35,17 @@ h2{font-size:clamp(34px,4.6vw,54px);line-height:1.05;letter-spacing:-.02em}
 h3{font-size:26px;letter-spacing:-.01em}
 .lead{margin:0;font-size:19px;line-height:1.55;color:var(--muted)}
 .btn{transition:filter .2s,transform .2s;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:8px;font-weight:600;font-size:16px;border:1px solid transparent;cursor:pointer;font-family:inherit}
-.btn.pri{background:linear-gradient(135deg,#7C3AED,#A855F7 55%,#6366F1);color:#fff;box-shadow:0 10px 30px -10px rgba(139,92,246,.8),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn.pri{background:linear-gradient(135deg,#2563EB,#3B82F6 55%,#0EA5E9);color:#fff;box-shadow:0 10px 30px -10px rgba(59,130,246,.8),inset 0 1px 0 rgba(255,255,255,.25)}
 .btn.pri:hover{filter:brightness(1.12);color:#fff;transform:translateY(-1px)}
 .btn.sec2{border-color:var(--line2);background:rgba(255,255,255,.04);color:var(--ink);font-weight:500}
 .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:24px;backdrop-filter:blur(8px)}
-.chip{display:inline-flex;align-items:center;font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:rgba(139,92,246,.18);color:var(--blue-d)}
+.chip{display:inline-flex;align-items:center;font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:rgba(59,130,246,.18);color:var(--blue-d)}
 .sample{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--sample-bg);border:1px solid var(--sample-line);color:var(--sample-ink)}
 .tab{min-height:44px;padding:0 18px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.04);color:var(--ink);font-family:inherit;font-weight:500;font-size:14px;cursor:pointer}
-.tab[aria-pressed="true"]{border-color:#A855F7;background:linear-gradient(135deg,#7C3AED,#A855F7);color:#fff;box-shadow:0 8px 24px -10px rgba(168,85,247,.8)}
+.tab[aria-pressed="true"]{border-color:#3B82F6;background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;box-shadow:0 8px 24px -10px rgba(96,165,250,.8)}
 .grid{display:grid;gap:16px}
 .g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.ico{width:44px;height:44px;border-radius:12px;background:rgba(139,92,246,.18);box-shadow:inset 0 0 0 1px rgba(139,92,246,.35);display:flex;align-items:center;justify-content:center}
+.ico{width:44px;height:44px;border-radius:12px;background:rgba(59,130,246,.18);box-shadow:inset 0 0 0 1px rgba(59,130,246,.35);display:flex;align-items:center;justify-content:center}
 details{border-bottom:1px solid var(--line)}
 summary{cursor:pointer;list-style:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600;font-size:18px;min-height:44px}
 summary::-webkit-details-marker{display:none}
@@ -60,39 +60,39 @@ details p{margin:0 0 20px;max-width:680px;color:var(--muted);line-height:1.6}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));align-items:stretch}
 .plan{display:flex;flex-direction:column;gap:16px}
-.plan.feat{border-color:var(--blue);box-shadow:0 0 0 1px rgba(168,85,247,.5),0 30px 80px -30px rgba(139,92,246,.7)}
+.plan.feat{border-color:var(--blue);box-shadow:0 0 0 1px rgba(96,165,250,.5),0 30px 80px -30px rgba(59,130,246,.7)}
 .plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px}
 .plan li{display:flex;gap:10px}
-.plan li::before{content:"";flex:0 0 16px;height:16px;margin-top:3px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A78BFA' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E")}
+.plan li::before{content:"";flex:0 0 16px;height:16px;margin-top:3px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2360A5FA' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E")}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 .card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(139,92,246,.55);border-color:var(--line2)}
-.caret::after{content:"";display:inline-block;width:7px;height:1em;margin-left:2px;vertical-align:-2px;background:#C4B5FD;animation:blink 1s steps(1) infinite}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(59,130,246,.55);border-color:var(--line2)}
+.caret::after{content:"";display:inline-block;width:7px;height:1em;margin-left:2px;vertical-align:-2px;background:#93C5FD;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;padding:4px;background:rgba(255,255,255,.04);gap:4px}
 .seg button{min-height:40px;padding:0 20px;border:0;border-radius:999px;background:transparent;font-family:inherit;font-weight:600;font-size:14px;color:var(--muted);cursor:pointer}
-.seg button[aria-pressed="true"]{background:linear-gradient(135deg,#7C3AED,#A855F7);color:#fff}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff}
 .mk{border-radius:12px;padding:20px;min-height:230px;font-size:15px;line-height:1.65}
 .mk.bad{background:rgba(255,255,255,.03);border:1px dashed #6B4A5A;color:var(--muted)}
-.mk.good{background:#0B0916;border:1px solid var(--line2);color:#E9E5FF;font-family:'IBM Plex Mono',monospace;font-size:13px}
+.mk.good{background:#07101F;border:1px solid var(--line2);color:#E6F0FF;font-family:'IBM Plex Mono',monospace;font-size:13px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade{animation:none}.rv{opacity:1;transform:none;transition:none}.card:hover{transform:none}.caret::after{animation:none}}
 @media (max-width:560px){.sec{padding:60px 0}.scene{grid-template-columns:64px 1fr}}
 :root{color-scheme:dark}
 body{overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 600px at 15% -10%,rgba(124,58,237,.35),transparent 60%),radial-gradient(800px 600px at 90% 5%,rgba(236,72,153,.18),transparent 60%),radial-gradient(900px 700px at 50% 110%,rgba(99,102,241,.25),transparent 60%)}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 600px at 15% -10%,rgba(37,99,235,.35),transparent 60%),radial-gradient(800px 600px at 90% 5%,rgba(14,165,233,.18),transparent 60%),radial-gradient(900px 700px at 50% 110%,rgba(14,165,233,.25),transparent 60%)}
 #top{position:relative;z-index:1}
-#top>header{position:sticky;top:0;z-index:30;background:rgba(7,6,13,.72);backdrop-filter:blur(14px)}
-h1{background:linear-gradient(180deg,#FFFFFF 25%,#C4B5FD 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFC6F7 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-.band{background:linear-gradient(180deg,rgba(15,13,26,.85),rgba(15,13,26,.55))}
-.float{position:absolute;z-index:2;padding:9px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#EDE9FE;background:rgba(20,16,38,.88);border:1px solid rgba(168,85,247,.45);box-shadow:0 14px 40px -12px rgba(139,92,246,.7);backdrop-filter:blur(10px);animation:floaty 6s ease-in-out infinite}
+#top>header{position:sticky;top:0;z-index:30;background:rgba(5,9,19,.72);backdrop-filter:blur(14px)}
+h1{background:linear-gradient(180deg,#FFFFFF 25%,#93C5FD 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFE3FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.band{background:linear-gradient(180deg,rgba(10,18,36,.85),rgba(10,18,36,.55))}
+.float{position:absolute;z-index:2;padding:9px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#E0EEFF;background:rgba(10,20,40,.88);border:1px solid rgba(96,165,250,.45);box-shadow:0 14px 40px -12px rgba(59,130,246,.7);backdrop-filter:blur(10px);animation:floaty 6s ease-in-out infinite}
 .f1{top:-18px;left:-22px}
 .f2{bottom:42px;right:-20px;animation-delay:-3s}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.vid{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line2);background:#0B0916;aspect-ratio:9/16;box-shadow:0 30px 70px -35px rgba(139,92,246,.7)}
+.vid{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line2);background:#07101F;aspect-ratio:9/16;box-shadow:0 30px 70px -35px rgba(59,130,246,.7)}
 .vid video{width:100%;height:100%;object-fit:cover;display:block}
-.vid span{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:14px;font-weight:600;background:linear-gradient(0deg,rgba(7,6,13,.9),transparent)}
+.vid span{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:14px;font-weight:600;background:linear-gradient(0deg,rgba(5,9,19,.9),transparent)}
 @media (max-width:900px){.float{display:none}}
 @media (prefers-reduced-motion:reduce){.float{animation:none}}
 </style>
@@ -131,7 +131,7 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFC6F7 100%);-webkit-backgroun
 
 <!-- demo -->
 <div style="flex:1 1 500px;min-width:0;display:flex;flex-direction:column;gap:10px;position:relative"><div class="float f1" aria-hidden="true">&#10003; Characters locked</div><div class="float f2" aria-hidden="true">Part 1 &middot; 0&ndash;15s</div>
-<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 48px -28px rgba(139,92,246,.6)">
+<div class="card" style="padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 48px -28px rgba(59,130,246,.6)">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px">
 <span class="mono">From idea to plan</span><span class="sample">Sample output</span>
 </div>
@@ -151,9 +151,9 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFC6F7 100%);-webkit-backgroun
 <div class="mono" style="margin-bottom:4px">Storyboard</div>
 <div id="demo-scenes"></div>
 </div>
-<div style="background:#0B0916;border:1px solid var(--line2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#C4B5FD">Prompt · Part 1</span>
-<button type="button" id="demo-copy" style="min-height:36px;padding:0 14px;border:0;border-radius:8px;background:linear-gradient(135deg,#7C3AED,#A855F7);color:#fff;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer">Copy prompt</button></div>
+<div style="background:#07101F;border:1px solid var(--line2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#93C5FD">Prompt · Part 1</span>
+<button type="button" id="demo-copy" style="min-height:36px;padding:0 14px;border:0;border-radius:8px;background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer">Copy prompt</button></div>
 <div id="demo-prompt" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.6;color:#E6ECFA"></div>
 </div>
 </div>
@@ -261,7 +261,7 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFC6F7 100%);-webkit-backgroun
 
 <!-- START -->
 <section id="start" class="wrap" style="padding-top:84px;padding-bottom:88px">
-<div style="background:radial-gradient(900px 300px at 80% 0%,rgba(139,92,246,.35),transparent 60%),var(--panel);border:1px solid var(--line2);border-radius:22px;padding:56px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+<div style="background:radial-gradient(900px 300px at 80% 0%,rgba(59,130,246,.35),transparent 60%),var(--panel);border:1px solid var(--line2);border-radius:22px;padding:56px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
 <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:14px">
 <h2 style="font-size:clamp(34px,4.8vw,58px)">Plan your first video today.</h2>
 <p style="margin:0;font-size:18px;line-height:1.6;color:var(--muted);max-width:560px">Create a free account, describe your idea, and get a copy-ready production plan in about a minute.</p>
@@ -426,7 +426,7 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFC6F7 100%);-webkit-backgroun
     document.querySelectorAll('#shape-controls .tab').forEach(function (b) { b.setAttribute('aria-pressed', String(sh[b.dataset.k]) === b.dataset.v ? 'true' : 'false'); });
     var n = Math.ceil(sh.dur / 15), scenes = Math.max(2, Math.round(sh.dur / 6));
     var bars = '';
-    for (var i = 0; i < n; i++) { var a = i * 15, e = Math.min(sh.dur, a + 15); bars += '<div style="flex:' + (e - a) + ' 1 0;min-width:0;background:rgba(139,92,246,.2);border:1px solid var(--line2);border-radius:8px;padding:8px 6px;text-align:center"><div class="mono" style="font-size:10px">Part ' + (i + 1) + '</div><div style="font-size:13px;font-weight:600">' + a + '–' + e + 's</div></div>'; }
+    for (var i = 0; i < n; i++) { var a = i * 15, e = Math.min(sh.dur, a + 15); bars += '<div style="flex:' + (e - a) + ' 1 0;min-width:0;background:rgba(59,130,246,.2);border:1px solid var(--line2);border-radius:8px;padding:8px 6px;text-align:center"><div class="mono" style="font-size:10px">Part ' + (i + 1) + '</div><div style="font-size:13px;font-weight:600">' + a + '–' + e + 's</div></div>'; }
     var rows = [['Camera', SH.style[sh.style][0]], ['Light', SH.style[sh.style][1]], ['Tone', SH.mood[sh.mood]], ['Framing', SH.aspect[sh.aspect]], ['Scenes', 'About ' + scenes + ' scenes across ' + sh.dur + ' seconds']];
     el('shape-out').innerHTML = '<div class="fade"><span class="mono">Plan structure</span><div style="display:flex;gap:6px;margin:10px 0 6px">' + bars + '</div>' +
       '<p style="margin:0 0 12px;font-size:13px;color:var(--muted)">' + (n > 1 ? 'Longer than one clip, so it is split into ' + n + ' connected prompts, each with its own Copy button.' : 'Fits in a single clip, so one prompt.') + '</p>' +
