@@ -334,7 +334,7 @@ h2{background:linear-gradient(180deg,#FFFFFF 30%,#CFC6F7 100%);-webkit-backgroun
   el('plans').innerHTML = PLANS.map(function (p) {
     return '<div class="card plan' + (p.featured ? ' feat' : '') + '">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3>' + esc(p.name) + '</h3>' + (p.featured ? '<span class="chip">Most popular</span>' : '') + '</div>' +
-      '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'Space Grotesk','Inter',system-ui,sans-serif;font-size:52px;line-height:1;letter-spacing:-.02em">$' + p.price + '</span><span style="color:var(--muted)">/month</span></div>' +
+      '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:Space Grotesk,Inter,sans-serif;font-size:52px;line-height:1;letter-spacing:-.02em">$' + p.price + '</span><span style="color:var(--muted)">/month</span></div>' +
       '<p style="margin:0;color:var(--muted);font-size:15px">' + esc(p.blurb) + '</p>' +
       '<ul>' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
       '<a class="btn ' + (p.featured ? 'pri' : 'sec2') + '" style="margin-top:auto" href="' + (p.price === 0 ? "/app/" : "/app/#/subscription") + '">' + (p.price === 0 ? "Start free" : "Get " + p.name) + '</a></div>';
