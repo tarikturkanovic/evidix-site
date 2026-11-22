@@ -258,6 +258,43 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
       row('Cinematography', b.cinematography) + row('Lighting & rendering', b.lightingRendering) + row('Audio plan', b.audioPlan) +
       list('Continuity rules', b.continuityRules) + list('Quality safeguards', b.qualitySafeguards) + '</div></details>';
   }
+    function rDone(s) { return s === 'completed' || s === 'failed' || s === 'nsfw' || s === 'canceled'; }
+  function rHtml(r) {
+    if (r.status === 'completed' && r.videoUrl && /^https:\/\//.test(r.videoUrl)) return '<video controls playsinline preload="metadata" src="' + esc(r.videoUrl) + '" style="width:100%;max-width:480px;border-radius:10px;display:block"></video><a class="btn ghost sm" style="margin-top:8px" href="' + esc(r.videoUrl) + '" target="_blank" rel="noopener">Open or download</a>';
+    if (r.status === 'completed') return 'Finished, but no video link came back.';
+    if (r.status === 'failed' || r.status === 'nsfw' || r.status === 'canceled') return esc(r.error || 'The render failed.') + ' Your credits were returned.';
+    return 'Rendering ' + r.resolution + ', ' + r.duration + 's. This usually takes a few minutes. You can leave this page and come back.';
+  }
+  function rEntry(list, r) {
+    var el = document.createElement('div'); el.style.cssText = 'margin-top:10px;font-size:13px';
+    list.insertBefore(el, list.firstChild); el.innerHTML = rHtml(r);
+    if (rDone(r.status)) return;
+    var tick = setInterval(function () {
+      if (!document.body.contains(el)) { clearInterval(tick); return; }
+      api('render?id=' + encodeURIComponent(r.id)).then(function (j) {
+        r = j.render; el.innerHTML = rHtml(r);
+        if (rDone(r.status)) { clearInterval(tick); if (r.status !== 'completed') refreshMe().catch(function () {}); }
+      }).catch(function () {});
+    }, 6000);
+  }
+  function renderBox(card, x, pid, i, rendersP) {
+    var rates = (me && me.costs && me.costs.renderPerSecond) || { '480p': 25, '720p': 40 };
+    var dur = Math.min(15, Math.max(4, Math.round((x.end - x.start) || 4)));
+    var box = document.createElement('div'); box.style.cssText = 'margin-top:14px;padding-top:14px;border-top:1px solid var(--line,#ccc)';
+    box.innerHTML = '<div style="font-weight:600;margin-bottom:6px">Render this part here</div><p style="margin:0 0 10px;font-size:13px;color:var(--muted)">Makes a ' + dur + '-second video with Seedance 2.5. Paid plans only. The cost is shown before you click. Video links expire after about 7 days, so download yours.</p><div class="row" style="gap:8px;flex-wrap:wrap"><select class="rres" style="font:inherit;padding:8px;border-radius:10px;border:1px solid var(--line,#ccc);background:transparent;color:inherit"></select><button class="btn sm rgo"></button></div><div class="rmsg" style="margin-top:10px;font-size:13px;color:var(--muted)"></div><div class="rlist"></div>';
+    var sel = box.querySelector('.rres'), go = box.querySelector('.rgo'), msg = box.querySelector('.rmsg'), list = box.querySelector('.rlist');
+    ['480p', '720p'].forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = k + ' · ' + (rates[k] * dur) + ' credits'; sel.appendChild(o); });
+    function label() { go.textContent = 'Render · ' + (rates[sel.value] * dur) + ' credits'; }
+    sel.onchange = label; label();
+    go.onclick = function () {
+      go.disabled = true; msg.textContent = '';
+      api('render', { projectId: pid, part: i, resolution: sel.value }).then(function (j) {
+        go.disabled = false; rEntry(list, j.render); refreshMe().catch(function () {});
+      }).catch(function (e) { go.disabled = false; msg.textContent = e.message; });
+    };
+    var anchor = card.querySelector('details'); card.insertBefore(box, anchor);
+    rendersP.then(function (all) { all.filter(function (r) { return r.part === i; }).reverse().forEach(function (r) { rEntry(list, r); }); });
+  }
   function viewProject(id) {
     $('#main').innerHTML = 'Loading...';
     sb.from('projects').select('*').eq('id', id).single().then(function (r) {
@@ -269,17 +306,19 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
         '<div class="msg err" id="pe" role="alert"></div>' +
         '<div class="card"><div class="mono" style="margin-bottom:8px">Project overview</div><p style="margin:0;font-size:17px">' + esc(pl.overview) + '</p><p style="margin:12px 0 0;font-size:13px;color:var(--muted)">Your idea: ' + esc(p.idea) + '</p></div>' +
         briefHtml(pl) +
-        '<div><h2 style="margin-bottom:12px">Video prompts</h2><div id="parts" class="grid"></div><p style="font-size:13px;color:var(--muted)">Copy a prompt, then paste it into the video generator. Videos are generated on Higgsfield with your own account there. Evidix AI is not affiliated with Higgsfield.</p></div>' +
+        '<div><h2 style="margin-bottom:12px">Video prompts</h2><div id="parts" class="grid"></div><p style="font-size:13px;color:var(--muted)">Copy a prompt, then paste it into the video generator. Or render it here on a paid plan. Evidix AI is not affiliated with Higgsfield.</p></div>' +
         '<div><h2 style="margin-bottom:12px">Storyboard</h2><div class="card" id="scenes"></div></div>' +
         '<div><h2 style="margin-bottom:12px">Characters</h2><div class="grid two">' + pl.characters.map(charCard).join('') + '</div></div>' +
         '<div><h2 style="margin-bottom:12px">Reference image guidance</h2><div class="card">' + (pl.referenceGuidance.length ? pl.referenceGuidance.map(function (g) { return '<div class="kv"><span class="mono">Scenes ' + esc(g.scenes) + '</span><span><b>' + esc(g.image) + '</b><br><span style="color:var(--muted)">' + esc(g.why) + '</span></span></div>'; }).join('') : 'No reference images are needed for this plan.') + '</div></div></div>';
       $('#main').innerHTML = h;
+      var rendersP = api('render?projectId=' + encodeURIComponent(id)).then(function (j) { return j.renders || []; }).catch(function () { return []; });
       pl.parts.forEach(function (x, i) {
         var d = document.createElement('div'); d.className = 'card';
         d.innerHTML = '<div class="row" style="justify-content:space-between;margin-bottom:10px"><b>Part ' + (i + 1) + ' — ' + x.start + '–' + x.end + ' seconds</b><span class="row" id="pb' + i + '"></span></div><div class="mono" style="margin-bottom:8px">' + wc(x.prompt) + ' words</div><div class="prompt">' + esc(x.prompt) + '</div>' +
           '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Fix My Prompt</summary><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px"><p style="margin:0;font-size:13px;color:var(--muted)">Tested this in Higgsfield and something went wrong? Describe what happened and we will rewrite this part. Costs 15 credits (returned if the fix fails).</p><textarea class="fxn" rows="3" maxlength="600" placeholder="e.g. The characters spoke gibberish, the laptop flipped around, it was too dark..." style="width:100%;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--line,#ccc);background:transparent;color:inherit"></textarea><div class="row"><button class="btn sm fxb">Fix this prompt · 15 credits</button></div></div></details>' +
           (x.versions && x.versions.length ? '<details style="margin-top:10px"><summary style="cursor:pointer;font-size:13px;color:var(--muted)">Previous versions (' + x.versions.length + ')</summary><div id="pv' + i + '" style="display:flex;flex-direction:column;gap:10px;margin-top:10px"></div></details>' : '');
         $('#parts').appendChild(d);
+        renderBox(d, x, id, i, rendersP);
         (x.versions || []).slice().reverse().forEach(function (v) {
           var vd = document.createElement('div'); vd.className = 'card';
           vd.innerHTML = '<div style="font-size:13px;color:var(--muted);margin-bottom:6px">Fix requested: ' + esc(v.note) + (v.changes ? '<br>' + esc(v.changes) : '') + '</div><div class="prompt">' + esc(v.prompt) + '</div><div class="row" style="margin-top:8px"></div>';
@@ -360,7 +399,7 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
         (active ? '<div class="card"><h3>Need more credits?</h3><p style="margin:6px 0 12px;font-size:14px;color:var(--muted)">One-time top-ups for subscribers. They expire when your credits refresh.</p><div class="row" style="gap:10px;flex-wrap:wrap">' + Object.keys(T).map(function (k) {
           var x = T[k]; return x.purchasable ? '<button class="btn ghost tu" data-t="' + k + '">' + x.credits.toLocaleString() + ' credits · $' + x.price + '</button>' : '';
         }).join('') + '</div></div>' : '') +
-        '<p style="font-size:13px;color:var(--muted)">Credits pay for video plans and prompt fixes. Video rendering is coming and will use the same credits. Prices shown before every action.</p></div>';
+        '<p style="font-size:13px;color:var(--muted)">Credits pay for video plans and prompt fixes. Video rendering uses the same credits (Seedance 2.5, paid plans). Prices shown before every action.</p></div>';
       document.querySelectorAll('.sub').forEach(function (bn) { bn.onclick = function () { bn.disabled = true; api('checkout', { plan: bn.dataset.p, interval: iv }).then(function (r) { location.href = r.url; }).catch(function (e) { bn.disabled = false; $('#se').textContent = e.message; }); }; });
       document.querySelectorAll('.tu').forEach(function (bn) { bn.onclick = function () { bn.disabled = true; api('checkout', { topup: bn.dataset.t }).then(function (r) { location.href = r.url; }).catch(function (e) { bn.disabled = false; $('#se').textContent = e.message; }); }; });
       var pb = $('#portal'); if (pb) pb.onclick = function () { api('portal', {}).then(function (r) { location.href = r.url; }).catch(function (e) { $('#se').textContent = e.message; }); };
