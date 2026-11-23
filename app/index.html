@@ -151,18 +151,20 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
   }
   window.addEventListener('hashchange', function () { if (me) route(); });
 
+  var GATE = false;
   function route() {
     var h = location.hash.replace(/^#\//, '').split('?')[0].split('/');
     var v = h[0] || 'dashboard';
     renderSide();
     window.scrollTo(0, 0);
+    if ((v === 'dashboard' || v === 'create') && (!me || !me.plan || me.plan === 'free')) { GATE = true; return viewSub(); }
     if (v === 'dashboard') return viewDashboard();
     if (v === 'create') return viewCreate();
     if (v === 'projects') return viewProjects();
     if (v === 'project') return viewProject(h[1]);
     if (v === 'library') return viewLibrary();
     if (v === 'characters') return viewCharacters();
-    if (v === 'subscription') return viewSub();
+    if (v === 'subscription') { GATE = false; return viewSub(); }
     if (v === 'settings') return viewSettings();
     location.hash = '#/dashboard';
   }
@@ -404,14 +406,14 @@ a.card:hover{transform:translateY(-3px);border-color:var(--line2);box-shadow:0 1
   }
   function viewSub() {
     var ok = /checkout=success/.test(location.hash), tk = /topup=success/.test(location.hash);
-    var P = cfg.plans, T = cfg.topups || {}, order = ['free', 'creator', 'pro', 'studio'];
+    var P = cfg.plans, T = cfg.topups || {}, order = ['creator', 'pro', 'studio'];
     var anyYear = order.some(function (k) { return P[k] && P[k].purchasable && P[k].purchasable.year; });
     var iv = anyYear ? 'year' : 'month';
     var active = me.status === 'active' || me.status === 'trialing';
     function fmt(n) { return Number(n).toLocaleString('en-US', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }); }
     function draw() {
       var refresh = me.refreshes ? ' · refreshes ' + new Date(me.refreshes).toLocaleDateString() : '';
-      $('#main').innerHTML = '<div style="display:flex;flex-direction:column;gap:20px"><h1>Subscription</h1>' +
+      $('#main').innerHTML = '<div style="display:flex;flex-direction:column;gap:20px"><h1>' + (GATE ? 'Pick a plan to start creating' : 'Subscription') + '</h1>' + (GATE ? '<p style="margin:0;color:var(--muted)">Evidix AI is a paid tool. Every plan includes credits for video plans, prompt fixes and in-site video rendering. Pick a plan and start right away. Cancel any time.</p>' : '') +
         (ok ? '<div class="note">Thanks! Your plan and credits update as soon as Stripe confirms the payment. Refresh in a moment if it still shows the old plan.</div>' : '') +
         (tk ? '<div class="note">Thanks! Your credits are added as soon as Stripe confirms the payment.</div>' : '') +
         '<div class="card"><div class="mono">Current plan</div><h2>' + esc(me.planName) + '</h2><p style="margin:6px 0 0">' + me.credits.toLocaleString() + ' of ' + me.creditsMax.toLocaleString() + ' credits left' + refresh + '</p>' +
