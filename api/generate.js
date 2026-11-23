@@ -31,7 +31,7 @@ export default async function handler(req, res) {
   const { data: profile0 } = await db.from('profiles').select('plan, subscription_status, billing_interval, credits, credits_period_start, current_period_end').eq('id', user.id).single();
   const profile = await maybeRefill(db, user.id, profile0);
   const key = profile?.plan || 'free', plan = PLANS[key] || PLANS.free;
-  if (key !== 'free' && !['active', 'trialing'].includes(profile.subscription_status)) return send(res, 402, { error: 'Your subscription is not active.' });
+  if (key === 'free' || !PLANS[key] || !['active', 'trialing'].includes(profile.subscription_status)) return send(res, 402, { error: 'Creating video plans needs a paid plan. Choose a plan to start.', code: 'PLAN' });
   if (!plan.detail.includes(settings.detail)) return send(res, 403, { error: `Your plan does not include ${settings.detail} prompts. Choose a lower detail level or upgrade.` });
 
   const cost = fix ? COSTS.fix : (body.sceneIndexes && body.sceneIndexes.length ? COSTS.scene : (body.projectId ? COSTS.improve : COSTS.plan));
